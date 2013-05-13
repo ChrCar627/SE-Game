@@ -81,6 +81,9 @@ public class ObstacleSpawner {
 			
 			
 			//WALL 
+			if(p.isImmune)
+				wall.x = -wall.width; 
+			else
 			moveWallBack(speed);
 			//WALL : allow second jump
 			if(p.y+ p.height >= wall.y && p.x+(3*p.width/4) > wall.x && p.x + p.speed*2 < wall.x+wall.width && !p.isImmune ){
