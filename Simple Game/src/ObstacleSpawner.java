@@ -2,10 +2,9 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+ 
 import java.util.Random;
-
-
-import javax.swing.JFrame;
+ 
 
 import fun.Obstacle;
 import fun.Player;
@@ -64,10 +63,12 @@ public class ObstacleSpawner {
 		g.setColor(Color.green);
 		wall.drawMe(g);
 		
+		//Graphics2D g2d = (Graphics2D) g; 
 		
-		for(int i=0; i<fireBalls.length;i++)
-			g.drawImage(fireBalls[i].animation.getAnimation(), fireBalls[i].x, fireBalls[i].y, null);
-		
+		for(int i=0; i<fireBalls.length;i++){
+			g.drawImage(fireBalls[i].animation.getAnimation(), fireBalls[i].x+ 40, fireBalls[i].y+2, null);
+			//g2d.draw(fireBalls[i].getShape());
+		}
 		// for(int i=0; i<spike.length;i++)
 		//	 spike[i].drawMe(g);
 		 
@@ -112,12 +113,15 @@ public class ObstacleSpawner {
 			if(!p.isImmune){
 			for(int i=0; i<fireBalls.length;i++)
 				if(p.getEllipse2DDouble().intersects(fireBalls[i].getShape())){
-					fireBalls[i].x += 5;
+					
+					for(int j=0; j<fireBalls.length;j++)
+						fireBalls[j].x = rightBound ;
+					
 					if(p.isSheilded)
 						p.isSheilded = false;
 					else {
 						p.hp--;
-						p.setImmune(20);
+						p.setImmune(25);
 					}//end else
 						
 				}//end if

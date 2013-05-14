@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 
 public class PurifiedImage {
 
+	public static Image emptyImage = (Image) new BufferedImage(1, 1, Image.SCALE_DEFAULT); 
 	
 	public Image TranseptBufferedImage(String path){
 		BufferedImage image ;

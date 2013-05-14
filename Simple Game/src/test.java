@@ -32,7 +32,6 @@ public class test extends JFrame{
 		
 		
 		
-		
 		/*
 		final JFrame frame = new JFrame("Dodge it"); 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

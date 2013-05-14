@@ -7,10 +7,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+ 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,6 +17,8 @@ import fun.*;
 
 public class GameInterFace extends GamePanel{
 
+	private static final long serialVersionUID = 1L;
+	
 	final int W = 100;
 	final int H = 40; 
 	final Font font = new Font("SEREF", Font.BOLD, 25);
@@ -43,6 +42,7 @@ public class GameInterFace extends GamePanel{
 	
 	Animation bubble; 
 	
+	Music mainMusic; 
 	
 	public GameInterFace(JFrame f) {
 		super(f);
@@ -94,6 +94,9 @@ public class GameInterFace extends GamePanel{
 		
 		immune2 = new Animation(im4,2);
 		
+		mainMusic = new Music("res/DigitalStream.wav");
+		
+		//mainMusic.loop();
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -154,6 +155,9 @@ public class MainGame extends GamePanel {
 		for(int i=0; i<16; i++)
 			g.drawImage(firewall.getAnimation(), 50, (i*20)+90 , null);
 
+		if(player.isImmune){
+			showFireBalls(g);
+		}
 		// Drawing frames
 		g.setColor(Color.BLACK);
 
@@ -199,10 +203,13 @@ public class MainGame extends GamePanel {
 			player.speed = speed*3;
 			player.action();
 		
-			swamper.lunch();
-			swamper.action(player, time);
-			time++;
 			
+			swamper.lunch();
+			
+			swamper.action(player, time);
+			
+			time++;
+		
 			//DEATH
 			if(player.x < 60){
 				player.x = 65;
@@ -225,5 +232,16 @@ public class MainGame extends GamePanel {
 
 	}//end action
 	
+	private void showFireBalls(Graphics g){
+		Animation fireBall = FireBallObstacle.fireBallUpAnimation;
+		Random ran = new Random();
+		fireBall.setFrame(ran.nextInt(4));
+		
+		for(int i=0; i< 96; i++){
+g.drawImage(fireBall.getAnimation(), leftBound + ((i%13)*30), upperBound - 10 + ((i/13)*40), null);
+			
+		}
+		
+	}
 	
 }//end class

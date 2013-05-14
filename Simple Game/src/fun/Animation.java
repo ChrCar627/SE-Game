@@ -83,5 +83,8 @@ public class Animation {
 			frame--; 
 	}
 	
+	public void setFrame(int frame){
+		this.frame = frame; 
+	}
 	
 }//end animation class
