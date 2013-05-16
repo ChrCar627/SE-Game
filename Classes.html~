@@ -10,6 +10,16 @@
 <b>Item</b> - Creates an item that can be consumed or used as an effect.<br>
 <b>Animation</b> - Takes an array of images as an argument and displays them in a series, creating an animation.<br>
 <br>
-<b>BallPlayer</b> - 
+<b>BallPlayer</b> - Creates the object that the player controls. Draws the animation for the object, and contains variables to define its bounding box.<br>
+<b>BubbleObstacle</b> - An item that if the player hits it, he gains a shield.<br>
+<b>Coin</b> - An object that when picked up gives you extra score.<br>
+<b>FireBallObstacle</b> - An object that damages you when it collides with your player.<br>
+<b>GameInterface</b> - Creates the menu for the game and changes the menu buttons when they are hovered over.<br>
+<b>MainGame</b> - Contains the main GamePanel which starts and handles all important functionality of the game.<br>
+<b>ObstacleSpawner</b> - Creates randomly generated or pre-set obstacles.<br>
+<b>PurifiedImage</b> - Removes the background from an image in order to give it a transparent background.<br>
+<b>test</b> - Creates the JFrame, main GamePanel, and runs the game.<br>
+<br>
+<a href="Design Document.html">Back</a>
 </body>
 </html>
