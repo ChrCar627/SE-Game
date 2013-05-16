@@ -33,14 +33,11 @@ public class GameInterFace extends GamePanel{
 	Color color1; 
 	Color color2; 
 	
+	int size1 = 25; 
+	int size2 = 25; 
 	
-	
-	
-	
-	
-	
-	boolean b = false; 
-	
+	boolean up1 = false; 
+	boolean up2 = false; 
 	
 	
 	Music mainMusic; 
@@ -54,12 +51,6 @@ public class GameInterFace extends GamePanel{
 		color2 = Color.PINK;
 		
 		//setting animation 
-	
-		
-		
-		
-		
-		
 		mainMusic = new Music("res/DigitalStream.wav");
 		
 		mainMusic.loop();
@@ -80,8 +71,10 @@ public class GameInterFace extends GamePanel{
 		g2d.fill(button2);
 		
 		g2d.setColor(Color.BLACK);
-		g2d.setFont(font);
+		
+		g2d.setFont(new Font("italic", Font.BOLD, size1));
 		g2d.drawString("Play", 125, 130);
+		g2d.setFont(new Font("italic", Font.BOLD, size2));
 		g2d.drawString("Quit", 120, 180);
 		
 		g2d.setColor(Color.red.darker());
@@ -111,18 +104,41 @@ public class GameInterFace extends GamePanel{
 					System.exit(0);
 			}
 		
-		if(button1.contains(input.point))
+		if(button1.contains(input.point)){
 			color1 = Color.RED.brighter();
-		else
+			
+			if(up1)
+				size1++;
+			else
+				size1--;
+			
+			if(size1==27 || size1==23)
+				up1= !up1;
+			
+				
+		}
+		else{
 			color1 = Color.PINK;
+			size1 = 25; 
+		}
 		
-		if(button2.contains(input.point))
+		if(button2.contains(input.point)){
 			color2 = Color.RED.brighter();
-		else 
+			if(up2)
+				size2++;
+			else
+				size2--;
+			
+			if(size2==27 || size2==23)
+				up2= !up2;
+			
+		}
+		else {
 			color2 = Color.PINK;
+			size2 = 25; 
+		}
 		
-		if(input.keyIsClicked(KeyEvent.VK_SPACE))
-			b = !b;
+		
 		
 	}//end action
 
