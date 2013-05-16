@@ -44,7 +44,8 @@ public class PurifiedImage {
 		    
 		} 
 		catch (IOException|IllegalArgumentException e ) {
-			System.out.println("Cannot find "+path);
+			//System.out.println("Cannot find "+path);
+			e.printStackTrace();
 		}
 	
 		return null;
