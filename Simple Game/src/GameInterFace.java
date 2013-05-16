@@ -33,15 +33,15 @@ public class GameInterFace extends GamePanel{
 	Color color1; 
 	Color color2; 
 	
-	Animation ani; 
 	
-	Animation immune; 
 	
-	Animation immune2; 
+	
+	
+	
 	
 	boolean b = false; 
 	
-	Animation bubble; 
+	
 	
 	Music mainMusic; 
 	
@@ -54,46 +54,11 @@ public class GameInterFace extends GamePanel{
 		color2 = Color.PINK;
 		
 		//setting animation 
-		PurifiedImage pure = new PurifiedImage();
-		Image[] im = {pure.TranseptBufferedImage("res/ball/normal/ball1.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball2.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball3.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball4.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball5.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball6.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball7.png")
-		};
-		
-		ani  = new Animation(im,1);
-		
-		Image[] im2 = {pure.TranseptBufferedImage("res/ball/bubble/ball1.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball2.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball3.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball4.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball5.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball6.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball7.png")
-		};
+	
 		
 		
-		bubble = new Animation(im2, 1);
 		
 		
-		Image[] im3 = {pure.TranseptBufferedImage("res/ball/immune/ball1.png"),
-				pure.TranseptBufferedImage("res/ball/immune/ball2.png"),
-				pure.TranseptBufferedImage("res/ball/immune/ball3.png"),
-				
-		};
-		
-		immune = new Animation(im3,2);
-		
-		Image[] im4 = {pure.TranseptBufferedImage("res/ball/immune/ball_1.png"),
-				pure.TranseptBufferedImage("res/ball/immune/ball_2.png"),
-				pure.TranseptBufferedImage("res/ball/immune/ball_3.png"),
-				
-		};
-		
-		immune2 = new Animation(im4,2);
 		
 		mainMusic = new Music("res/DigitalStream.wav");
 		
@@ -127,16 +92,9 @@ public class GameInterFace extends GamePanel{
 		
 		//Animation test
 		
-		g.drawImage(ani.getAnimationImage(), 250, 250, null); 
 		
-		g.drawImage(bubble.getAnimationImage(), 200, 250, null); 
 		
-		if(b){
-			g.drawImage(immune.getAnimationImage(), 250, 250, null);
-			g.drawImage(immune2.getAnimationImage(), 200, 250, null); 
-		}
-		
-		g.drawImage(Coin.coinAnimation.getAnimationImage(), 10 ,10 ,null);
+		g.drawImage(CoinObstacle.coinAnimation.getAnimationImage(), 10 ,10 ,null);
 		
 	}
 	@Override

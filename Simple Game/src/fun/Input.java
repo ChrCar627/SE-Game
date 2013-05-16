@@ -32,10 +32,17 @@ import java.awt.event.MouseMotionListener;
 public class Input implements KeyListener, MouseListener, MouseMotionListener {
 
 	
-	private static boolean[] thePressedKey;
-	private static boolean[] clicked;
+	private static boolean[] keyPressed;
+	private static boolean[] keyClicked;
 	private static boolean mouseClicked;  
-	private static boolean mousePressed; 
+	private static boolean mousePressed;
+	
+	private static boolean anyKeyPressed; 
+	private static boolean anyKeyClicked; 
+	
+	
+	
+	
 	public Point point; 
 	
 	
@@ -47,32 +54,39 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 	}
 	public Input() {
 		//400 is just a random number. You could replace it with any other big number.  
-		thePressedKey = new boolean[400];
-		clicked = new boolean[400];
+		keyPressed = new boolean[400];
+		keyClicked = new boolean[400];
 		
 		point = new Point(0, 0); 
 		//Initializing 
 		for (int i = 0; i < 400; i++) {
-			thePressedKey[i] = false;
-			clicked[i] = false;
+			keyPressed[i] = false;
+			keyClicked[i] = false;
 		}
 	
 		mouseClicked = false;  
 		mousePressed = false; 
 	
+		anyKeyPressed = false; 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (!thePressedKey[e.getKeyCode()])
-			clicked[e.getKeyCode()] = true;
-		thePressedKey[e.getKeyCode()] = true;
+		if (!keyPressed[e.getKeyCode()])
+			keyClicked[e.getKeyCode()] = true;
+		if(!anyKeyPressed)
+			anyKeyClicked = true;
+		
+		keyPressed[e.getKeyCode()] = true;
+		anyKeyPressed = true; 
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		thePressedKey[e.getKeyCode()] = false;
-		clicked[e.getKeyCode()] = false;
+		keyPressed[e.getKeyCode()] = false;
+		keyClicked[e.getKeyCode()] = false;
+		anyKeyPressed = false; 
+		anyKeyClicked = false;
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -80,11 +94,11 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 	//Returns true with is key is down and false with the key is up. 
 	//This method is usable for motion in games
 	public boolean keyIsDown(int keyCode) {
-		return thePressedKey[keyCode];
+		return keyPressed[keyCode];
 	}
 	//Returns true with is key is up and false with the key is down. 
 	public boolean keyIsUp(int keyCode) {
-		return !thePressedKey[keyCode];
+		return !keyPressed[keyCode];
 	}
 
 	
@@ -92,8 +106,8 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 	//It's useful when you what to play a sound with a key
 	public boolean keyIsClicked(int keyCode) {
 
-		if (clicked[keyCode]) {
-			clicked[keyCode] = false;
+		if (keyClicked[keyCode]) {
+			keyClicked[keyCode] = false;
 			return true;
 		}
 
@@ -146,7 +160,16 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 		}
 		else 
 			return false; 
-		
-		
 	}
+	
+	public boolean anyKeyIsPressed(){
+		return anyKeyPressed;
+	}
+		
+	public boolean anyKeyIsClicked(){
+		return anyKeyClicked;
+	}
+		
+		
+	
 }//end class

@@ -199,6 +199,9 @@ public class MainGame extends GamePanel {
 
 	@Override
 	public void action() {
+	
+	
+		
 		if (player.isAlive) {
 			player.speed = speed*3;
 			player.action();
