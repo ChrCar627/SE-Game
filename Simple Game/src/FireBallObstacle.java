@@ -10,9 +10,9 @@ import fun.Obstacle;
 public class FireBallObstacle extends Obstacle {
 
 	private static PurifiedImage pure = new PurifiedImage();
-	private static Image[] im = { pure.TranseptBufferedImage("res/fireBalls/fire1.png"), pure.TranseptBufferedImage("res/fireBalls/fire2.png"),
-			pure.TranseptBufferedImage("res/fireBalls/fire3.png"), pure.TranseptBufferedImage("res/fireBalls/fire4.png"),
-			pure.TranseptBufferedImage("res/fireBalls/fire3.png"),pure.TranseptBufferedImage("res/fireBalls/fire2.png")
+	private static Image[] im = { pure.TranseptBufferedImage("res/fireBalls/fire_right/fire1.png"), pure.TranseptBufferedImage("res/fireBalls/fire_right/fire2.png"),
+			pure.TranseptBufferedImage("res/fireBalls/fire_right/fire3.png"), pure.TranseptBufferedImage("res/fireBalls/fire_right/fire4.png"),
+			pure.TranseptBufferedImage("res/fireBalls/fire_right/fire3.png"),pure.TranseptBufferedImage("res/fireBalls/fire_right/fire2.png")
 			};
 	private static Image[] im2 = { pure.TranseptBufferedImage("res/fireBalls/fire_up/fire1.png"), pure.TranseptBufferedImage("res/fireBalls/fire_up/fire2.png"),
 			pure.TranseptBufferedImage("res/fireBalls/fire_up/fire3.png"), pure.TranseptBufferedImage("res/fireBalls/fire_up/fire4.png"),
@@ -25,7 +25,11 @@ public class FireBallObstacle extends Obstacle {
 
 	public FireBallObstacle() {
 		super( 20, 26); //set width and height
+
 		animation = fireBallRightAnimation;	
+
+		animation = fireBallRightAnimation;
+
 	}
 	@Override
 	public Rectangle getShape(){  // the shape is at the end of the fire ball 

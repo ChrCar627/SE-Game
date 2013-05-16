@@ -105,8 +105,8 @@ public class GameInterFace extends GamePanel{
 			else if(button2.contains(input.point)){
 				if (JOptionPane.showConfirmDialog(
 					    null,
-					    "Fix me please :'(",
-					    "I'm broken",
+					    "Are you sure you want to quit?",
+					    "Quit Game",
 					    JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION);
 					System.exit(0);
 			}
