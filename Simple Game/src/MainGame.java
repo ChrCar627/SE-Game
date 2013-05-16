@@ -46,7 +46,9 @@ public class MainGame extends GamePanel {
 	Rectangle topSide; 
 	Rectangle botSide; 
 	
-	PurifiedImage pure = new PurifiedImage();
+	final PurifiedImage pure = new PurifiedImage();
+	
+	Image heart = pure.TranseptBufferedImage("res/heart.png");
 	
 	Animation firewall ;
 	
@@ -182,10 +184,10 @@ public class MainGame extends GamePanel {
 				- ("Score : " .length()*10), 45) ;
 		
 		//DRAW HEALTH BAR
-		g2d.drawString("Health: ", 80 ,70);  
+		g2d.drawString("Health: ", 80 ,75);  
 	
 		for(int i=0;i!=player.hp;i++) 
-				g2d.drawString("<3", 170+(i*32) ,70);
+				g2d.drawImage(heart, 140+ heart.getWidth(null)+("Health".length()*3)+(i*heart.getWidth(null)) ,80-heart.getHeight(null),null);
 		//Guides X & Y TODO
 		//g2d.drawString(String.format("x: %d, y: %d", input.point.x, input.point.y), 100, 100);
 		//g2d.drawString("secondJump "+player.secondJump, 100, 120);
@@ -240,7 +242,7 @@ public class MainGame extends GamePanel {
 		Random ran = new Random();
 		fireBall.setFrame(ran.nextInt(4));
 		
-		for(int i=0; i< 96; i++){
+		for(int i=0; i< 91; i++){
 g.drawImage(fireBall.getAnimationImage(), leftBound + ((i%13)*30), upperBound - 10 + ((i/13)*40), null);
 			
 		}

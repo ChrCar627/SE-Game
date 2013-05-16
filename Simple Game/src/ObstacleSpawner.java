@@ -75,7 +75,7 @@ public class ObstacleSpawner {
 
 	public void action(Player p, int time) {
 		int speed = p.speed;
-		int level = time/150; 
+		int level = 2+time/200; 
 		if(isActive){
 			time++; 
 			
@@ -127,14 +127,14 @@ public class ObstacleSpawner {
 		if(wall.x +wall.width <= (leftBound-20)) {
 			//wall = new Obstacle(ran.nextInt(30)+20,ran.nextInt(20)+10);
 			//wall.width = 100;
-			createNewWall(ran.nextInt(30)+20,ran.nextInt(20)+10);
+			createNewWall(ran.nextInt(100)+10,ran.nextInt(40)+25);
 		}
 	}
 	
 	private void throwFireBall(int i, int delta){
 		fireBalls[i].x += delta; 
 		if(fireBalls[i].x +fireBalls[i].width >= rightBound){
-			fireBalls[i].reset(leftBound - ran.nextInt(50));
+			fireBalls[i].reset(leftBound - ran.nextInt(100));
 			fireBalls[i].y = upperBound + (((botBound-upperBound)/8)*ran.nextInt(8));
 		}
 	}
