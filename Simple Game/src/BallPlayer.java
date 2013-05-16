@@ -19,7 +19,7 @@ public class BallPlayer extends Player {
 	int rightBound;
 	
 	Animation immuneAni; 
-	Animation bubbleAni; 
+	Animation bubbleAni; //shield 
 	
 	
 	public BallPlayer(Input in, JFrame frame) {
@@ -34,6 +34,39 @@ public class BallPlayer extends Player {
 		 rightBound =  MAX_WIDTH - leftBound;// 4/5
 		 
 		 resetPoint = MAX_WIDTH/2;
+		 PurifiedImage pure = new PurifiedImage();
+			Image[] im = {pure.TranseptBufferedImage("res/ball/normal/ball1.png"),
+					pure.TranseptBufferedImage("res/ball/normal/ball2.png"),
+					pure.TranseptBufferedImage("res/ball/normal/ball3.png"),
+					pure.TranseptBufferedImage("res/ball/normal/ball4.png"),
+					pure.TranseptBufferedImage("res/ball/normal/ball5.png"),
+					pure.TranseptBufferedImage("res/ball/normal/ball6.png"),
+					pure.TranseptBufferedImage("res/ball/normal/ball7.png")
+			};
+			animation  = new Animation(im,1);
+			
+			Image[] im2 = {pure.TranseptBufferedImage("res/ball/bubble/ball1.png"),
+					pure.TranseptBufferedImage("res/ball/bubble/ball2.png"),
+					pure.TranseptBufferedImage("res/ball/bubble/ball3.png"),
+					pure.TranseptBufferedImage("res/ball/bubble/ball4.png"),
+					pure.TranseptBufferedImage("res/ball/bubble/ball5.png"),
+					pure.TranseptBufferedImage("res/ball/bubble/ball6.png"),
+					pure.TranseptBufferedImage("res/ball/bubble/ball7.png")
+			};
+			
+			
+			bubbleAni = new Animation(im2, 1);
+			
+			Image[] im3 = {pure.TranseptBufferedImage("res/ball/immune/ball_1.png"),
+					pure.TranseptBufferedImage("res/ball/immune/ball_2.png"),
+					pure.TranseptBufferedImage("res/ball/immune/ball_3.png"),
+					
+			};
+			
+			immuneAni = new Animation(im3,2);
+		 
+			width = im[0].getWidth(null)-2;
+			height = im[0].getHeight(null)-2;
 	}
 
 	@Override
@@ -44,58 +77,23 @@ public class BallPlayer extends Player {
 		height = 30;
 		isFalling = true;
 		hp = 3;
-		PurifiedImage pure = new PurifiedImage();
-		Image[] im = {pure.TranseptBufferedImage("res/ball/normal/ball1.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball2.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball3.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball4.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball5.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball6.png"),
-				pure.TranseptBufferedImage("res/ball/normal/ball7.png")
-		};
-		animation  = new Animation(im,1);
-		
-		Image[] im2 = {pure.TranseptBufferedImage("res/ball/bubble/ball1.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball2.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball3.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball4.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball5.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball6.png"),
-				pure.TranseptBufferedImage("res/ball/bubble/ball7.png")
-		};
-		
-		
-		bubbleAni = new Animation(im2, 1);
-		
-		Image[] im3 = {pure.TranseptBufferedImage("res/ball/immune/ball_1.png"),
-				pure.TranseptBufferedImage("res/ball/immune/ball_2.png"),
-				pure.TranseptBufferedImage("res/ball/immune/ball_3.png"),
-				
-		};
-		
-		immuneAni = new Animation(im3,2);
-		
-		width = im[0].getWidth(null)-2;
-		height = im[0].getHeight(null)-2;
 		
 		isPushed = false;
-		
-		
 	}
 	
 	
 	@Override
-	public Image getAnimation(){
+	public Image getAnimationImage(){
 		if(isSheilded)
-			return bubbleAni.getAnimation();
+			return bubbleAni.getAnimationImage();
 		else 
-			return animation.getAnimation();
+			return animation.getAnimationImage();
 	}
 	
 	public void drawMe(Graphics g){
-		g.drawImage(getAnimation(), x, y, null);
+		g.drawImage(getAnimationImage(), x, y, null);
 		if(isImmune)
-			g.drawImage(immuneAni.getAnimation(), x, y, null);
+			g.drawImage(immuneAni.getAnimationImage(), x, y, null);
 		
 	}
 	

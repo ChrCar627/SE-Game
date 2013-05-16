@@ -17,6 +17,8 @@ public class Animation {
 	}
 	
 	public Animation(Image[] im, int d){
+		if(d<=0)
+			d=1; 
 		int[] delay = new int[im.length];
 		
 		for(int i=0;i<delay.length;i++)
@@ -26,10 +28,13 @@ public class Animation {
 		this.delay = delay; 
 	}
 	
+	public Animation(Image[] im){
+		this(im, 1);
+	}
 	
 	// ##### GET~TERS #####
 	
-	public Image getAnimation(){
+	public Image getAnimationImage(){
 		timer++;
 		
 		if(timer == delay[frame]){
@@ -41,6 +46,15 @@ public class Animation {
 		}
 		 
 		return image[frame];
+	}
+	
+	public Animation getAnimation(){
+		try {
+			return (Animation) this.clone();
+		} catch (CloneNotSupportedException e) {
+			System.out.println("cannot clone animation");
+		}
+		return null; 
 	}
 	
 	public Image getImageAt(int frame){

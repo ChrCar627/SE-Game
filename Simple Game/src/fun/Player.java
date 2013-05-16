@@ -31,7 +31,8 @@ public abstract class Player {
 	public int jumpingLimit;
 	public int resetPoint; 
 	public int immuneCD; 
-	
+	public int coinNumber;
+	public int score; 
 	
 	public Item item; 
 	
@@ -69,9 +70,9 @@ public abstract class Player {
 	
 	// ##### GET.TERS #####
 	
-	public Image getAnimation(){
+	public Image getAnimationImage(){
 
-		return animation.getAnimation();
+		return animation.getAnimationImage();
 	}
 	
 	public Ellipse2D.Double getEllipse2DDouble(){

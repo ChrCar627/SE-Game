@@ -2,7 +2,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
- 
+
 import java.util.Random;
  
 
@@ -12,7 +12,6 @@ import fun.Player;
 public class ObstacleSpawner {
 
 	Obstacle wall; 
-	Obstacle[] spike; 
 	
 	Obstacle[] fireBalls; 
 	
@@ -55,7 +54,7 @@ public class ObstacleSpawner {
 	public void init() {
 		
 		isActive = false; 
-		spike = new Obstacle[0];
+		
 		wall = new Obstacle(50, 20);
 	}
 
@@ -66,7 +65,7 @@ public class ObstacleSpawner {
 		//Graphics2D g2d = (Graphics2D) g; 
 		
 		for(int i=0; i<fireBalls.length;i++){
-			g.drawImage(fireBalls[i].animation.getAnimation(), fireBalls[i].x+ 40, fireBalls[i].y+2, null);
+			g.drawImage(fireBalls[i].animation.getAnimationImage(), fireBalls[i].x+ 40, fireBalls[i].y+2, null);
 			//g2d.draw(fireBalls[i].getShape());
 		}
 		// for(int i=0; i<spike.length;i++)
@@ -103,7 +102,8 @@ public class ObstacleSpawner {
 			
 			//FIREBALLS
 			
-			// throw 
+			// throw
+			if(!p.isImmune)
 			for(int i=0; i< ((level > 20)? 20: level); i++)	
 				throwFireBall(i, speed+ (ran.nextInt(5)));
 			
@@ -113,17 +113,8 @@ public class ObstacleSpawner {
 			if(!p.isImmune){
 			for(int i=0; i<fireBalls.length;i++)
 				if(p.getEllipse2DDouble().intersects(fireBalls[i].getShape())){
+					playerRecieveDamage(p);
 					
-					for(int j=0; j<fireBalls.length;j++)
-						fireBalls[j].x = rightBound ;
-					
-					if(p.isSheilded)
-						p.isSheilded = false;
-					else {
-						p.hp--;
-						p.setImmune(25);
-					}//end else
-						
 				}//end if
 					
 		}//end for
@@ -132,8 +123,11 @@ public class ObstacleSpawner {
 
 	private void moveWallBack(int delta){
 		wall.x -= delta; 
-		if(wall.x +wall.width <= leftBound-20)
-			wall.reset(rightBound);
+		Random ran = new Random(); 
+		if(wall.x +wall.width <= leftBound-20) {
+			wall = new Obstacle(ran.nextInt(30)+20,ran.nextInt(20)+10);
+			wall.reset(rightBound+ ran.nextInt(50));
+		}
 	}
 	
 	private void throwFireBall(int i, int delta){
@@ -143,6 +137,21 @@ public class ObstacleSpawner {
 			fireBalls[i].y = upperBound + (((botBound-upperBound)/8)*ran.nextInt(8));
 		}
 	}
+	
+	public void playerRecieveDamage(Player p){
+		for(int j=0; j<fireBalls.length;j++)
+			fireBalls[j].x = rightBound-50 ;
+		
+		
+		if(p.isSheilded)
+			p.isSheilded = false;
+		else {
+			
+			p.hp--;
+			p.setImmune(25);
+		}//end else
+			
+	}//end playerReciveS=Damgage 
 	
 	public void lunch(){
 		isActive = true;

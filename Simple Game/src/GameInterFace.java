@@ -16,8 +16,9 @@ import fun.*;
 
 
 public class GameInterFace extends GamePanel{
-
+	
 	private static final long serialVersionUID = 1L;
+	
 	
 	final int W = 100;
 	final int H = 40; 
@@ -96,7 +97,7 @@ public class GameInterFace extends GamePanel{
 		
 		mainMusic = new Music("res/DigitalStream.wav");
 		
-		//mainMusic.loop();
+		mainMusic.loop();
 	}
 
 	@Override
@@ -126,14 +127,16 @@ public class GameInterFace extends GamePanel{
 		
 		//Animation test
 		
-		g.drawImage(ani.getAnimation(), 250, 250, null); 
+		g.drawImage(ani.getAnimationImage(), 250, 250, null); 
 		
-		g.drawImage(bubble.getAnimation(), 200, 250, null); 
+		g.drawImage(bubble.getAnimationImage(), 200, 250, null); 
 		
 		if(b){
-			g.drawImage(immune.getAnimation(), 250, 250, null);
-			g.drawImage(immune2.getAnimation(), 200, 250, null); 
+			g.drawImage(immune.getAnimationImage(), 250, 250, null);
+			g.drawImage(immune2.getAnimationImage(), 200, 250, null); 
 		}
+		
+		g.drawImage(Coin.coinAnimation.getAnimationImage(), 10 ,10 ,null);
 		
 	}
 	@Override

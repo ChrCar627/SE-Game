@@ -140,7 +140,7 @@ public class MainGame extends GamePanel {
 		g2d.setRenderingHints(rh);
 		
 		// draw player 
-		//g2d.drawImage(player.getAnimation(),player.x,player.y, null);
+		//g2d.drawImage(player.getAnimationImage(),player.x,player.y, null);
 		player.drawMe(g);
 		//g2d.fill(new Ellipse2D.Double(player.x, player.y, player.width,
 				//player.height));
@@ -153,7 +153,7 @@ public class MainGame extends GamePanel {
 		g2d.fill(death);
 		
 		for(int i=0; i<16; i++)
-			g.drawImage(firewall.getAnimation(), 50, (i*20)+90 , null);
+			g.drawImage(firewall.getAnimationImage(), 50, (i*20)+90 , null);
 
 		if(player.isImmune){
 			showFireBalls(g);
@@ -186,10 +186,10 @@ public class MainGame extends GamePanel {
 	
 		for(int i=0;i!=player.hp;i++) 
 				g2d.drawString("<3", 170+(i*32) ,70);
-		//Guides X & Y 
-		g2d.drawString(String.format("x: %d, y: %d", input.point.x, input.point.y), 100, 100);
-		g2d.drawString("secondJump "+player.secondJump, 100, 120);
-		
+		//Guides X & Y TODO
+		//g2d.drawString(String.format("x: %d, y: %d", input.point.x, input.point.y), 100, 100);
+		//g2d.drawString("secondJump "+player.secondJump, 100, 120);
+		g.setColor(Color.black);
 		if(!player.isAlive){
 			g.drawString("You lost", MAX_WIDTH/2 - 80, MAX_HEIGHT/2);
 			
@@ -215,7 +215,7 @@ public class MainGame extends GamePanel {
 				player.x = 65;
 				player.hp--;
 				player.setImmune(50);
-			
+				
 			}
 			
 			if(player.hp <=0){
@@ -238,7 +238,7 @@ public class MainGame extends GamePanel {
 		fireBall.setFrame(ran.nextInt(4));
 		
 		for(int i=0; i< 96; i++){
-g.drawImage(fireBall.getAnimation(), leftBound + ((i%13)*30), upperBound - 10 + ((i/13)*40), null);
+g.drawImage(fireBall.getAnimationImage(), leftBound + ((i%13)*30), upperBound - 10 + ((i/13)*40), null);
 			
 		}
 		

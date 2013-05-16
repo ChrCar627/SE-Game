@@ -22,8 +22,8 @@ public class Obstacle {
 		height = h; 
 	}
 	
-	public Image getAnimation(){
-		return animation.getAnimation();
+	public Image getAnimationImage(){
+		return animation.getAnimationImage();
 	}
 	
 	public Rectangle getShape(){
