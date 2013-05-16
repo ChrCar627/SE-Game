@@ -20,9 +20,9 @@ public class FireBallObstacle extends Obstacle {
 		super( 0, 0);
 		
 		PurifiedImage pure = new PurifiedImage();
-		Image[] im = { pure.TranseptBufferedImage("res/fireBalls/fire1.png"), pure.TranseptBufferedImage("res/fireBalls/fire2.png"),
-				pure.TranseptBufferedImage("res/fireBalls/fire3.png"), pure.TranseptBufferedImage("res/fireBalls/fire4.png"),
-				pure.TranseptBufferedImage("res/fireBalls/fire3.png"),pure.TranseptBufferedImage("res/fireBalls/fire2.png")
+		Image[] im = { pure.TranseptBufferedImage("res/fireBalls/fire_right/fire1.png"), pure.TranseptBufferedImage("res/fireBalls/fire_right/fire2.png"),
+				pure.TranseptBufferedImage("res/fireBalls/fire_right/fire3.png"), pure.TranseptBufferedImage("res/fireBalls/fire_right/fire4.png"),
+				pure.TranseptBufferedImage("res/fireBalls/fire_right/fire3.png"),pure.TranseptBufferedImage("res/fireBalls/fire_right/fire2.png")
 				};
 		fireBallRightAnimation = new Animation(im, 1);
 		

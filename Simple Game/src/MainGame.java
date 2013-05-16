@@ -78,9 +78,9 @@ public class MainGame extends GamePanel {
 		
 		PurifiedImage pure = new PurifiedImage();
 		
-		Image[] im = { pure.TranseptBufferedImage("res/fire1.png"), pure.TranseptBufferedImage("res/fire2.png"),
-				pure.TranseptBufferedImage("res/fire3.png"), pure.TranseptBufferedImage("res/fire4.png"),
-				pure.TranseptBufferedImage("res/fire3.png"),pure.TranseptBufferedImage("res/fire2.png")
+		Image[] im = { pure.TranseptBufferedImage("res/fireBalls/fire_left/fire1.png"), pure.TranseptBufferedImage("res/fireBalls/fire_left/fire2.png"),
+				pure.TranseptBufferedImage("res/fireBalls/fire_left/fire3.png"), pure.TranseptBufferedImage("res/fireBalls/fire_left/fire4.png"),
+				pure.TranseptBufferedImage("res/fireBalls/fire_left/fire3.png"),pure.TranseptBufferedImage("res/fireBalls/fire_left/fire2.png")
 				};
 		
 		firewall = new Animation(im,20);
