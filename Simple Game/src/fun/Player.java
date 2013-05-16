@@ -2,6 +2,7 @@ package fun;
 
 import java.awt.Image;
 import java.awt.Shape;
+import java.awt.event.KeyEvent;
 import java.awt.geom.Ellipse2D;
 
 public abstract class Player {
@@ -138,8 +139,13 @@ public abstract class Player {
 			isJumping = true;
 		
 		if(isJumping){
-			if( y - delta > max)
-				y -= delta; 
+			if( y - delta > max){
+				y -= delta;
+				if(!input.keyIsDown(KeyEvent.VK_SPACE)){
+					isJumping = false;
+					isFalling = true;
+				}
+			}
 			else {
 				y = max;
 				isJumping = false; 

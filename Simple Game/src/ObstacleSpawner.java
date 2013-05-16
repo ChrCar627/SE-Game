@@ -124,9 +124,10 @@ public class ObstacleSpawner {
 	private void moveWallBack(int delta){
 		wall.x -= delta; 
 		Random ran = new Random(); 
-		if(wall.x +wall.width <= leftBound-20) {
-			wall = new Obstacle(ran.nextInt(30)+20,ran.nextInt(20)+10);
-			wall.reset(rightBound+ ran.nextInt(50));
+		if(wall.x +wall.width <= (leftBound-20)) {
+			//wall = new Obstacle(ran.nextInt(30)+20,ran.nextInt(20)+10);
+			//wall.width = 100;
+			createNewWall(ran.nextInt(30)+20,ran.nextInt(20)+10);
 		}
 	}
 	
