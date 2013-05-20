@@ -3,11 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
-import java.awt.event.KeyEvent;
- 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -53,7 +50,7 @@ public class GameInterFace extends GamePanel{
 		//setting animation 
 		mainMusic = new Music("res/DigitalStream.wav");
 		
-		mainMusic.loop();
+		//mainMusic.loop();
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public abstract class Player {
 	public boolean isSheilded;
 	public boolean secondJump;
 	
-	public Shape shape;
+	//public Shape shape;
 	
 	public int x; 
 	public int y; 
@@ -31,8 +31,11 @@ public abstract class Player {
 	public int height; 
 	public int jumpingLimit;
 	public int resetPoint; 
+	
 	public int immuneCD; 
-	public int coinNumber;
+	protected int coinsCD=0; 
+	
+	public int coins;
 	public int score; 
 	
 	public Item item; 
@@ -80,6 +83,28 @@ public abstract class Player {
 		return new Ellipse2D.Double(x, y, width, height);
 	}
 	
+	public int getScore(){
+		return score; 
+	}
+	
+	public int getCoin(){
+		return coins; 
+	}
+	
+	// ###### SET TERS ##### 
+		public void setImmune(int CD) {
+			isImmune = true; 
+			immuneCD = CD; 
+			
+		}
+		
+		public void setCoins(int n){
+			coins = n; 
+		}
+		public void setScore(int n){
+		score = n;
+		}
+		
 	
 	// ##### applying action ######
 	
@@ -99,7 +124,8 @@ public abstract class Player {
 	}
 	
  	public void applyMovingRight(int keyCode, int delta, int limit){
-		if(input.keyIsDown(keyCode) && x < limit){
+		
+ 		if(input.keyIsDown(keyCode) && x < limit){
 			if(x + delta < limit)
 				x += delta;
 			else 
@@ -244,6 +270,19 @@ public abstract class Player {
 			isImmune = false;
 	}
 	
+	public void applyCoinCD(){
+		if(coinsCD > 0)
+			coinsCD--; 
+	}
+	
+	
+	public void addCoins(int n){
+		coinsCD = 20; 
+		coins += n; 
+	}
+	
+	
+	
 	public void consumeItemOnce(){
 		if(item.isNotUsed){
 			item.consume(this);
@@ -261,13 +300,5 @@ public abstract class Player {
 		item = i;
 		i.isNotPicked = false;
 	}
-
-	public void setImmune(int CD) {
-		isImmune = true; 
-		immuneCD = CD; 
-		
-	}
-	
-	
 	
 }//end Player class
