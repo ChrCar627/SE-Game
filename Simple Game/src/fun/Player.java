@@ -27,6 +27,11 @@ public abstract class Player {
 	public int y; 
 	public int hp; 
 	public int speed; 
+	public int coins;
+	public int score; 
+	
+	public int energy; 
+	
 	public int width; 
 	public int height; 
 	public int jumpingLimit;
@@ -35,8 +40,6 @@ public abstract class Player {
 	public int immuneCD; 
 	protected int coinsCD=0; 
 	
-	public int coins;
-	public int score; 
 	
 	public Item item; 
 	

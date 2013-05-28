@@ -11,6 +11,8 @@ import fun.Player;
 
 public class BallPlayer extends Player {
 	
+	final int MAX_ENERGY = 50; 
+	
 	int MAX_WIDTH;
 	int MAX_HEIGHT;
 	int upperBound;
@@ -78,6 +80,8 @@ public class BallPlayer extends Player {
 		isFalling = true;
 		hp = 3;
 		
+		energy = MAX_ENERGY; 
+				
 		isPushed = false;
 	}
 	
@@ -96,7 +100,7 @@ public class BallPlayer extends Player {
 			g.drawImage(immuneAni.getAnimationImage(), x, y, null);
 		
 		if(coinsCD > 0){
-			int coinYpos = (coinsCD>10)? coinsCD*2 : 10;
+			//int coinYpos = (coinsCD>10)? coinsCD*2 : 10;
 			g.drawImage(CoinObstacle.coinAnimation.getAnimationImage() , x+(width/2) - 6, (y+height/2) - (70 -coinsCD*2) , null);
 		}
 		
@@ -108,15 +112,27 @@ public class BallPlayer extends Player {
 		applyImmuneCD();
 		applyCoinCD();
 		
-		if(! input.keyIsDown(KeyEvent.VK_SHIFT)){
+		
+		if( input.keyIsUp(KeyEvent.VK_SHIFT)){
+			
 			if(secondJump && input.keyIsClicked(KeyEvent.VK_SPACE)){
 				isFalling = false;
 				isJumping = true;
 			}
 		
 			applyJumpingAndFalling(KeyEvent.VK_SPACE, speed*2, upperBound + 150 - jumpingLimit, bottomBound - height  );
+		}else if (energy <=0){
+			
+			isFalling = true; 
+			applyJumpingAndFalling(KeyEvent.VK_SPACE, speed*2, upperBound + 150 - jumpingLimit, bottomBound - height);
+		}else{
+			energy--; 
 		}
-		
+			
+		if(y+height == bottomBound){
+			if(energy+1 <= MAX_ENERGY)
+				energy++;
+		}
 		
 		
 	//	applyMovingRight(KeyEvent.VK_RIGHT, speed, 50 + 200);
@@ -126,7 +142,7 @@ public class BallPlayer extends Player {
 			animation.previousFrame();
 		}
 		else {
-			applyGravityRight(speed, (MAX_WIDTH)/2);
+			applyGravityRight(speed, (MAX_WIDTH) - (2*leftBound));
 			if(x < MAX_WIDTH/2)
 				animation.nextFrame();
 		}

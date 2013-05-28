@@ -82,7 +82,7 @@ public class ObstacleSpawner {
 		
 		for(int i=0; i<fireBalls.length;i++){
 			g.drawImage(fireBalls[i].animation.getAnimationImage(), fireBalls[i].x+ 40, fireBalls[i].y+2, null);
-			g2d.draw(fireBalls[i].getShape());
+			//g2d.draw(fireBalls[i].getShape());
 		}
 		// for(int i=0; i<spike.length;i++)
 		//	 spike[i].drawMe(g);

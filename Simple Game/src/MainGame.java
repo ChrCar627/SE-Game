@@ -188,6 +188,11 @@ public class MainGame extends GamePanel {
 	
 		for(int i=0;i!=player.hp;i++) 
 				g2d.drawImage(heart, 140+ heart.getWidth(null)+("Health".length()*3)+(i*heart.getWidth(null)) ,80-heart.getHeight(null),null);
+		
+		g.setColor(Color.YELLOW);
+		g2d.drawString("Energy: ", 70 ,100);  
+		g.fillRect(160, 80, player.energy*5, 20);
+		
 		//Guides X & Y TODO
 		//g2d.drawString(String.format("x: %d, y: %d", input.point.x, input.point.y), 100, 100);
 		//g2d.drawString("secondJump "+player.secondJump, 100, 120);
@@ -206,6 +211,7 @@ public class MainGame extends GamePanel {
 		
 		if (player.isAlive) {
 			player.speed = speed*3;
+			
 			player.action();
 		
 			
