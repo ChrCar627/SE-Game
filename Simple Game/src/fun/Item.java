@@ -22,8 +22,7 @@ public abstract class Item {
 		public void effect(Player p) {}
 		public void consume(Player p) {}		
 	};
-	
-	
+
 	public Item(){
 		isNotUsed = true; 
 		isNotPicked = true; 

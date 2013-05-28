@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -15,6 +17,9 @@ import fun.*;
 public class GameInterFace extends GamePanel{
 	
 	private static final long serialVersionUID = 1L;
+	
+	int cd =0;
+	int fly =200;
 	
 	
 	final int W = 100;
@@ -80,11 +85,20 @@ public class GameInterFace extends GamePanel{
 		g2d.draw(button2);
 		
 		
-		//Animation test
+		//Animation test TODO
 		
+		//g.drawImage(CoinObstacle.coinAnimation.getAnimationImage(), 10 ,10 ,null);
 		
-		
-		g.drawImage(CoinObstacle.coinAnimation.getAnimationImage(), 10 ,10 ,null);
+		if(input.keyIsClicked(KeyEvent.VK_SPACE)){
+			cd = 50;
+			
+		}
+			
+		if(cd!=0){
+			g.drawImage(CoinObstacle.coinAnimation.getAnimationImage(), 200 ,(cd*3) ,null);
+			cd--;
+			
+		}
 		
 	}
 	@Override

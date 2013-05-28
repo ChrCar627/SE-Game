@@ -157,7 +157,7 @@ public class MainGame extends GamePanel {
 		for(int i=0; i<16; i++)
 			g.drawImage(firewall.getAnimationImage(), 50, (i*20)+90 , null);
 
-		if(player.isImmune){
+		if(player.immuneCD -10 > 0){
 			showFireBalls(g);
 		}
 		// Drawing frames
@@ -180,7 +180,7 @@ public class MainGame extends GamePanel {
 
 		g2d.drawString(getRealTime(time), (MAX_WIDTH / 2)
 				- (getRealTime(time).length()*7), 20);
-		g2d.drawString(String.format("Score_:_%4d", score).replaceAll(" ", "0").replaceAll("_", " "),  (MAX_WIDTH / 2)
+		g2d.drawString(String.format("Score_:_%4d", player.score).replaceAll(" ", "0").replaceAll("_", " "),  (MAX_WIDTH / 2)
 				- ("Score : " .length()*10), 45) ;
 		
 		//DRAW HEALTH BAR

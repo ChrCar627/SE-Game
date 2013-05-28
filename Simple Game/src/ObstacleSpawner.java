@@ -2,6 +2,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import java.util.Random;
  
@@ -13,7 +14,9 @@ public class ObstacleSpawner {
 
 	Obstacle wall; 
 	
-	Obstacle[] fireBalls; 
+	FireBallObstacle[] fireBalls; 
+	
+	CoinObstacle[] coins; 
 	
 	Random ran = new Random(); 
 	
@@ -36,11 +39,18 @@ public class ObstacleSpawner {
 		 upperBound  = up ; 
 		 botBound   = bottum; //screw spelling
 		
-		fireBalls = new Obstacle[20];
+		fireBalls = new FireBallObstacle[5];
 		
 		for(int i=0; i<fireBalls.length;i++)
-			fireBalls[i]= new FireBallObstacle(); 
+			fireBalls[i]= new FireBallObstacle(0); 
 		
+		coins = new CoinObstacle[5];
+		
+		for(int i=0; i<coins.length;i++){
+			coins[i]= new CoinObstacle(); 
+			coins[i].x = rightBound+ (i*50);
+		}
+			
 	}
 	
 	
@@ -62,11 +72,17 @@ public class ObstacleSpawner {
 		g.setColor(Color.green);
 		wall.drawMe(g);
 		
-		//Graphics2D g2d = (Graphics2D) g; 
+		Graphics2D g2d = (Graphics2D) g; 
+		
+		
+		for(int i=0; i<coins.length;i++){
+			//g2d.draw(coins[i].getShape());
+			g.drawImage(coins[i].animation.getAnimationImage(), coins[i].x, coins[i].y, null);
+		}
 		
 		for(int i=0; i<fireBalls.length;i++){
 			g.drawImage(fireBalls[i].animation.getAnimationImage(), fireBalls[i].x+ 40, fireBalls[i].y+2, null);
-			//g2d.draw(fireBalls[i].getShape());
+			g2d.draw(fireBalls[i].getShape());
 		}
 		// for(int i=0; i<spike.length;i++)
 		//	 spike[i].drawMe(g);
@@ -75,9 +91,9 @@ public class ObstacleSpawner {
 
 	public void action(Player p, int time) {
 		int speed = p.speed;
-		int level = 2+time/200; 
+		int level = 2+(time/200) - (( 3- p.hp)*2); 
 		if(isActive){
-			time++; 
+			//time++; 
 			
 			
 			//WALL 
@@ -103,10 +119,45 @@ public class ObstacleSpawner {
 			//FIREBALLS
 			
 			// throw
-			if(!p.isImmune)
-			for(int i=0; i< ((level > 20)? 20: level); i++)	
-				throwFireBall(i, speed+ (ran.nextInt(5)));
 			
+			for(int i=0; i< ((level > 5)? 5: level); i++)	
+				throwFireBall(i, p.speed + ran.nextInt(level));
+			
+			
+			//MOVE THE FIREBALLS  (SPEED 0 WILL NOT MOVE)
+			if(!p.isImmune)
+				for(int i=0; i< fireBalls.length;i++){
+					fireBalls[i].x += fireBalls[i].speed;
+					
+					if(fireBalls[i].x +fireBalls[i].width >= rightBound){
+						fireBalls[i].reset(leftBound - (ran.nextInt(100) + 50 ));
+						fireBalls[i].y = upperBound + (((botBound-upperBound)/8)*ran.nextInt(8));
+					}
+				}
+			
+			
+				for(int i=0;i<coins.length; i++)
+					if(coins[i].x == 0){
+						coins[i].x = rightBound;
+						coins[i].y = 2*upperBound+ (ran.nextInt(botBound-upperBound));
+					}
+			
+			
+			for(int i=0; i<coins.length;i++){
+				if(coins[i].x != 0)
+					coins[i].x--;
+			}
+				
+			
+			//GET COIN WHEN TOUCH
+			for(int i=0; i<coins.length;i++){
+			  if(p.getEllipse2DDouble().intersects(coins[i].getShape())){
+				  p.addCoins(1);
+				  p.score+= p.speed*level; 
+				  coins[i].x=0;
+				  
+			  }	  
+			}
 			
 			
 			//BURN IF TOUCH
@@ -125,17 +176,13 @@ public class ObstacleSpawner {
 		wall.x -= delta; 
 		Random ran = new Random(); 
 		if(wall.x +wall.width <= (leftBound-20)) {
-			//wall = new Obstacle(ran.nextInt(30)+20,ran.nextInt(20)+10);
-			//wall.width = 100;
 			createNewWall(ran.nextInt(100)+10,ran.nextInt(40)+25);
 		}
 	}
 	
-	private void throwFireBall(int i, int delta){
-		fireBalls[i].x += delta; 
-		if(fireBalls[i].x +fireBalls[i].width >= rightBound){
-			fireBalls[i].reset(leftBound - ran.nextInt(100));
-			fireBalls[i].y = upperBound + (((botBound-upperBound)/8)*ran.nextInt(8));
+	private void throwFireBall(int i, int delta){  // TODO
+		if(fireBalls[i].speed==0){
+			fireBalls[i] = new FireBallObstacle(delta);
 		}
 	}
 	

@@ -95,12 +95,18 @@ public class BallPlayer extends Player {
 		if(isImmune)
 			g.drawImage(immuneAni.getAnimationImage(), x, y, null);
 		
+		if(coinsCD > 0){
+			int coinYpos = (coinsCD>10)? coinsCD*2 : 10;
+			g.drawImage(CoinObstacle.coinAnimation.getAnimationImage() , x+(width/2) - 6, (y+height/2) - (70 -coinsCD*2) , null);
+		}
+		
 	}
 	
 	@Override
 	public void action() {
 		
 		applyImmuneCD();
+		applyCoinCD();
 		
 		if(! input.keyIsDown(KeyEvent.VK_SHIFT)){
 			if(secondJump && input.keyIsClicked(KeyEvent.VK_SPACE)){

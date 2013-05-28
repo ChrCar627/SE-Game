@@ -23,17 +23,18 @@ public class FireBallObstacle extends Obstacle {
 	public static Animation fireBallLeftAnimation; 
 	public static Animation fireBallRightAnimation = new Animation(im, 1);
 
-	public FireBallObstacle() {
-		super( 20, 26); //set width and height
+	public int speed = 0; 
+	
+	public FireBallObstacle(int s) {
+		super( 14, 18); //set width and height
 
-		animation = fireBallRightAnimation;	
-
-		animation = fireBallRightAnimation;
-
+		speed = s; 
+		
+		animation = new Animation(im);
 	}
 	@Override
 	public Rectangle getShape(){  // the shape is at the end of the fire ball 
-		return new Rectangle(x+80,y+2,width,height);
+		return new Rectangle(x+81,y+7,width,height);
 	}
 	
 	

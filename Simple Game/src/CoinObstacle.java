@@ -20,16 +20,12 @@ public class CoinObstacle extends Obstacle {
 	
 	private static int[] d = {5,1,1,1};
 	
-	public static Animation coinAnimation  = new Animation(im , d); 
+	public static Animation coinAnimation  = new Animation(im , 1); 
 	
 	public CoinObstacle() {
 		super(0, 0);
-	
-		
-		
-		
-		
-		animation = coinAnimation; 
+
+		animation = new Animation(im, d); 
 		
 		width = animation.getCurrentImage().getWidth(null);
 		height = animation.getCurrentImage().getHeight(null);

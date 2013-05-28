@@ -277,7 +277,7 @@ public abstract class Player {
 	
 	
 	public void addCoins(int n){
-		coinsCD = 20; 
+		coinsCD = 30; 
 		coins += n; 
 	}
 	
