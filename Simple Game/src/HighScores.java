@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import fun.GamePanel;
 
@@ -28,6 +29,8 @@ public class HighScores extends GamePanel {
 	String[] names = new String[10];
 	int[] scores = new int[10];
 	int[] coins = new int[10];
+	//long[] times = new long[10];
+	String[] times = new String[10];
 	int fh;
 	int size1 = 25; 
 	boolean up1 = false; 
@@ -39,16 +42,17 @@ public class HighScores extends GamePanel {
 		color1 = Color.PINK;
 
 		Random r = new Random();
-		AddScore("Harry",r.nextInt(500000),r.nextInt(500));
-		AddScore("Todd",r.nextInt(500000),r.nextInt(500));
-		AddScore("Riley",r.nextInt(500000),r.nextInt(500));
-		AddScore("Kristina",r.nextInt(500000),r.nextInt(500));
-		AddScore("Jon",r.nextInt(500000),r.nextInt(500));
-		AddScore("Cory",r.nextInt(500000),r.nextInt(500));
-		AddScore("Haily",r.nextInt(500000),r.nextInt(500));
-		AddScore("Bryanna",r.nextInt(500000),r.nextInt(500));
-		AddScore("Carl",r.nextInt(500000),r.nextInt(500));
-		AddScore("Lars",r.nextInt(500000),r.nextInt(500));
+		
+		AddScore("Harry",r.nextInt(500000),r.nextInt(500),"5:20");
+		AddScore("Todd",r.nextInt(500000),r.nextInt(500),"5:05");
+		AddScore("Riley",r.nextInt(500000),r.nextInt(500),"2:00");
+		AddScore("Kristina",r.nextInt(500000),r.nextInt(500),"2:00");
+		AddScore("Jon",r.nextInt(500000),r.nextInt(500),"2:00");
+		AddScore("Cory",r.nextInt(500000),r.nextInt(500),"2:00");
+		AddScore("Haily",r.nextInt(500000),r.nextInt(500),"2:00");
+		AddScore("Bryanna",r.nextInt(500000),r.nextInt(500),"2:00");
+		AddScore("Carl",r.nextInt(500000),r.nextInt(500),"2:00");
+		AddScore("Lars",r.nextInt(500000),r.nextInt(500),"2:00");
 	}
 
 	public void init() {
@@ -74,11 +78,12 @@ public class HighScores extends GamePanel {
 		g2d.setColor(Color.red.darker());
 		g2d.setStroke(new BasicStroke(5f));
 		g2d.draw(button1);
-		g2d.setFont(new Font("italic", Font.BOLD, 30));
+		g2d.setFont(new Font("italic", Font.BOLD, 25));
 		g2d.setColor(Color.black);
 		g2d.drawString("Name", 50, 60);
 		g2d.drawString("Score", 200, 60);
-		g2d.drawString("Coins", 350, 60);
+		g2d.drawString("Coins", 300, 60);
+		g2d.drawString("Time", 400, 60);
 
 		g2d.setFont(new Font("italic", Font.PLAIN, 18));
 		int curx = 50;
@@ -87,7 +92,11 @@ public class HighScores extends GamePanel {
 			g2d.drawString(""+(i+1), curx-30, cury);
 			g2d.drawString(names[i], curx, cury);
 			g2d.drawString(""+scores[i], curx+150, cury);
-			g2d.drawString(""+coins[i], curx+300, cury);
+			g2d.drawString(""+coins[i], curx+250, cury);
+			//int seconds = (int) ((times[i] / 1000) % 60);
+			//int minutes = (int) ((times[i] / 1000) / 60);
+			//g2d.drawString(""+minutes+":"+((seconds<10)?"0"+seconds:""+seconds), curx+350, cury);
+			g2d.drawString(times[i], curx+350, cury);
 			cury+=30;
 		}
 		
@@ -95,7 +104,6 @@ public class HighScores extends GamePanel {
 
 
 	public void action() {
-		
 		if(input.mouseIsClicked())
 			if(button1.contains(input.point))
 				setStage(0);
@@ -130,22 +138,24 @@ public class HighScores extends GamePanel {
 		}
 		return result;
 	}
-	public void AddScore(String name, int score, int coin){
-		AddScore(name, score, coin, 0);
+	public void AddScore(String name, int score, int coin, String time){
+		AddScore(name, score, coin, time, 0);
 	}
-	public void AddScore(String name, int score, int coin, int position){
+	public void AddScore(String name, int score, int coin, String time, int position){
 		if(position>=names.length) return;
 		else if(score>scores[position]){
 			String tempname = names[position];
 			int tempscore = scores[position];
 			int tempcoins = coins[position];
+			String temptime = times[position];
 			names[position] = name;
 			scores[position] = score;
 			coins[position] = coin;
-			AddScore(tempname,tempscore,tempcoins,position+1);
+			times[position] = time;
+			AddScore(tempname,tempscore,tempcoins,temptime, position+1);
 			}
 		else if(score<scores[position]){
-			AddScore(name,score,coin,position+1);
+			AddScore(name,score,coin,time, position+1);
 		}
 	}
 	
