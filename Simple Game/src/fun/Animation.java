@@ -10,10 +10,12 @@ public class Animation {
 	private int frame =0; 
 	private int timer=-1; 
 	
+	private boolean stop; 
 	
 	public Animation(Image[] im, int[] d){
 		image = im; 
 		delay = d; 
+		stop = false;
 	}
 	
 	public Animation(Image[] im, int d){
@@ -35,7 +37,8 @@ public class Animation {
 	// ##### GET~TERS #####
 	
 	public Image getAnimationImage(){
-		timer++;
+		if(!stop)
+			timer++;
 		
 		if(timer == delay[frame]){
 			timer = 0;
@@ -99,6 +102,10 @@ public class Animation {
 	
 	public void setFrame(int frame){
 		this.frame = frame; 
+	}
+	
+	public void setStop(boolean b){
+		stop = b;
 	}
 	
 }//end animation class

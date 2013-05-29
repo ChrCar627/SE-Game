@@ -31,6 +31,7 @@ public abstract class Player {
 	public int score; 
 	
 	public int energy; 
+	public int slowEffect; // - haste
 	
 	public int width; 
 	public int height; 

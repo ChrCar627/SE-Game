@@ -38,12 +38,15 @@ public class ObstacleSpawner {
 	
 	public ObstacleSpawner(int right, int left, int up, int bottum){
 		
+		isActive = false; 
 		
 		 leftBound  = left; 
 		 rightBound = right ; 
 		 upperBound  = up ; 
 		 botBound   = bottum; //screw spelling
 		
+		 wall = new Obstacle(50, 20);
+		 
 		fireBalls = new FireBallObstacle[5];
 		
 		for(int i=0; i<fireBalls.length;i++)
@@ -54,8 +57,11 @@ public class ObstacleSpawner {
 		for(int i=0; i<coins.length;i++){
 			coins[i]= new CoinObstacle(); 
 			coins[i].x = rightBound+ (i*50);
+			coins[i].y = 3*upperBound;
 		}
-			
+		
+		
+		
 	}
 	
 	
@@ -66,12 +72,7 @@ public class ObstacleSpawner {
 	}
 	
 	
-	public void init() {
-		
-		isActive = false; 
-		
-		wall = new Obstacle(50, 20);
-	}
+
 
 	public void draw(Graphics g) {
 		g.setColor(Color.green);
@@ -116,7 +117,7 @@ public class ObstacleSpawner {
 			else
 			moveWallBack(speed);
 			//WALL : allow second jump
-			if(p.y+ p.height >= wall.y && p.x+(3*p.width/4) > wall.x && p.x + p.speed*2 < wall.x+wall.width && !p.isImmune ){
+			if(p.y+ p.height >= wall.y && p.x+(3*p.width/4) > wall.x && p.x - p.speed < wall.x+wall.width && !p.isImmune ){
 				p.y = wall.y - p.height;
 				p.jumpingLimit = wall.height;
 				p.secondJump  = true; 
@@ -145,17 +146,16 @@ public class ObstacleSpawner {
 					
 					if(fireBalls[i].x +fireBalls[i].width >= rightBound){
 						fireBalls[i].reset(leftBound - (ran.nextInt(100) + 50 ));
-						fireBalls[i].y = upperBound + (((botBound-upperBound)/8)*ran.nextInt(8));
+						fireBalls[i].y = upperBound + (((botBound-upperBound)/6)*ran.nextInt(6));
 					}
 				}
 			
 			
 				for(int i=0;i<coins.length; i++)
 					if(coins[i].x == 0){
-						coins[i].x = rightBound;
-						coins[i].y = 2*upperBound+ (ran.nextInt(botBound-upperBound));
+						coins[i].x = rightBound + 10 + (i*20) + ran.nextInt(20);
+						coins[i].y = 3*upperBound   - coins[0].height + ran.nextInt(((botBound-upperBound)/3))  ;//(ran.nextInt((botBound-upperBound)/4));
 					}
-			
 			
 			for(int i=0; i<coins.length;i++){
 				if(coins[i].x != 0)
