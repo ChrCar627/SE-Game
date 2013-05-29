@@ -26,11 +26,11 @@ public class HighScores extends GamePanel {
 //	ArrayList<String> names;
 //	ArrayList scores;
 //	ArrayList coins;
-	String[] names = new String[10];
-	int[] scores = new int[10];
-	int[] coins = new int[10];
+	public static String[] names = new String[10];
+	public static int[] scores = new int[10];
+	public static int[] coins = new int[10];
 	//long[] times = new long[10];
-	String[] times = new String[10];
+	public static String[] times = new String[10];
 	int fh;
 	int size1 = 25; 
 	boolean up1 = false; 
@@ -127,7 +127,7 @@ public class HighScores extends GamePanel {
 		}
 	}
 	
-	public boolean CheckScore(int score){
+	public static boolean CheckScore(int score){
 		boolean result = false;
 		for(int i : scores){
 			if(score>i){
@@ -138,10 +138,10 @@ public class HighScores extends GamePanel {
 		}
 		return result;
 	}
-	public void AddScore(String name, int score, int coin, String time){
+	public static void AddScore(String name, int score, int coin, String time){
 		AddScore(name, score, coin, time, 0);
 	}
-	public void AddScore(String name, int score, int coin, String time, int position){
+	public static void AddScore(String name, int score, int coin, String time, int position){
 		if(position>=names.length) return;
 		else if(score>scores[position]){
 			String tempname = names[position];
