@@ -3,6 +3,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 
 import java.util.Random;
  
@@ -19,6 +20,10 @@ public class ObstacleSpawner {
 	CoinObstacle[] coins; 
 	
 	Random ran = new Random(); 
+	
+	PurifiedImage pure = new PurifiedImage();
+	Image brick = pure.TranseptBufferedImage("res/brick.png");
+			
 	
 	boolean isActive; 
 	
@@ -71,6 +76,15 @@ public class ObstacleSpawner {
 	public void draw(Graphics g) {
 		g.setColor(Color.green);
 		wall.drawMe(g);
+		
+		for(int i=0; i < 1+wall.height/6; i++){
+			for(int j=0; j < 1+ i%2 +  wall.width/10; j++){
+				g.drawImage(brick, wall.x+ (j*10) - ((i%2) * 5), wall.y+ (i*6), null);
+				
+			}
+			
+			
+		}
 		
 		Graphics2D g2d = (Graphics2D) g; 
 		

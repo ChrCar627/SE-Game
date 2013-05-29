@@ -17,7 +17,7 @@ public class MainGame extends GamePanel {
 	private static final long serialVersionUID = 1L;
 
 	final Font font = new Font("serial", Font.BOLD + Font.ITALIC, 25);
-
+	
 	boolean isOn; 
 	boolean isPaused; 
 	
@@ -29,9 +29,11 @@ public class MainGame extends GamePanel {
 	int rightBound;
 	
 
-	int immuneCD; 
 	
 	
+	int rockWallTrachers=0;
+	
+	int waTracker =0;
 	int score;
 	int speed;
 	int time;
@@ -48,7 +50,29 @@ public class MainGame extends GamePanel {
 	
 	final PurifiedImage pure = new PurifiedImage();
 	
-	Image heart = pure.TranseptBufferedImage("res/heart.png");
+	
+	
+	final Image heart = pure.TranseptBufferedImage("res/heart.png");
+	final Image rockwall = pure.TranseptBufferedImage("res/rockwallwithholes.png");
+	final Image wa = pure.TranseptBufferedImage("res/wow.png");
+	final Image rock = pure.TranseptBufferedImage("res/rock.png");
+	
+	
+	final Image[] im = { 
+			pure.TranseptBufferedImage("res/volcano/volcano_1.png"),
+			pure.TranseptBufferedImage("res/volcano/volcano_2.png"),
+			pure.TranseptBufferedImage("res/volcano/volcano_3.png"),
+			pure.TranseptBufferedImage("res/volcano/volcano_4.png"),
+			pure.TranseptBufferedImage("res/volcano/volcano_5.png"),
+			pure.TranseptBufferedImage("res/volcano/volcano_6.png"),
+			pure.TranseptBufferedImage("res/volcano/volcano_7.png"),
+			pure.TranseptBufferedImage("res/volcano/volcano_8.png"),
+		
+	};
+	
+	final Animation volcano = new Animation(im, 3);
+	
+	
 	
 	Animation firewall ;
 	
@@ -60,7 +84,6 @@ public class MainGame extends GamePanel {
 	
 	public MainGame(JFrame f) {
 		super(f);
-		
 		isOn = true; 
 		isPaused = false; 
 		
@@ -90,25 +113,7 @@ public class MainGame extends GamePanel {
 		
 		swamper.createNewWall(100, 50);
 		
-		healthPot = new Item() {
-			
-			@Override
-			public void init() {
-				//animation = Animation();
-				
-				//icomImage =
-			}
-			
-			@Override
-			public void effect(Player p) {
-				
-			}
-			
-			@Override
-			public void consume(Player p) {
-				p.hp++;
-			}
-		};
+		
 		
 		
 		
@@ -141,6 +146,35 @@ public class MainGame extends GamePanel {
 				RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g2d.setRenderingHints(rh);
 		
+		g.setColor(Color.BLACK);
+		g.fillRect(leftBound, upperBound, rightBound,bottomBound);
+		
+		//back ground; 
+			g.drawImage(volcano.getAnimationImage(), leftBound, upperBound*2-45 , null);
+			
+			g.drawImage(volcano.getAnimationImage(), leftBound + volcano.getImageAt(0).getWidth(null) -2, upperBound*2-45, null);
+			
+			int rockWidth = rockwall.getWidth(null) ; 
+			//g.drawImage(rockwall, leftBound - rockWallTrachers ,  upperBound*2 , null);
+			//g.drawImage(rockwall, leftBound - rockWallTrachers + rockWidth,  upperBound*2 , null);
+			//g.drawImage(rockwall, leftBound - rockWallTrachers + rockWidth*2,  upperBound*2 , null);
+			//g.drawImage(rockwall, leftBound - rockWallTrachers + rockWidth*3,  upperBound*2 , null);
+			rockWallTrachers++;
+			
+			if(rockWallTrachers == rockWidth)
+				rockWallTrachers=0;
+			
+			int waWidth = wa.getWidth(null);
+			int waHieght = upperBound - 190;
+			g.drawImage(wa, leftBound - waTracker ,  waHieght, null);
+			g.drawImage(wa, leftBound - waTracker + waWidth ,  waHieght, null);
+			g.drawImage(wa, leftBound - waTracker + waWidth*2 ,  waHieght, null);
+			
+			waTracker+=2;
+			
+			if(waTracker >= waWidth)
+				waTracker=0;
+			
 		// draw player 
 		//g2d.drawImage(player.getAnimationImage(),player.x,player.y, null);
 		player.drawMe(g);
