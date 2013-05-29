@@ -19,10 +19,12 @@ public class test extends JFrame{
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		
+		
 		MainGame mg = new MainGame(frame);
 		GameInterFace gif = new GameInterFace(frame);
+		HighScores hs = new HighScores(frame);
 		
-		GameMenuPanel gmp = new GameMenuPanel(frame, gif,mg);
+		GameMenuPanel gmp = new GameMenuPanel(frame, gif,mg,hs);
 		
 		frame.add(gmp);
 		gmp.run();

@@ -28,18 +28,23 @@ public class GameInterFace extends GamePanel{
 	
 	final Rectangle button1 = new Rectangle(100, 100, W, H) ;
 	final Rectangle button2 = new Rectangle(100, 150, W, H) ;
+	final Rectangle button3 = new Rectangle(100, 200, W, H) ;
 	
 	int fw;//frame width
 	int fh;//frame height
 	
 	Color color1; 
 	Color color2; 
+	Color color3; 
 	
 	int size1 = 25; 
 	int size2 = 25; 
+	int size3 = 25; 
+	
 	
 	boolean up1 = false; 
 	boolean up2 = false; 
+	boolean up3 = false; 
 	
 	
 	Music mainMusic; 
@@ -51,6 +56,7 @@ public class GameInterFace extends GamePanel{
 		
 		color1 = Color.PINK;
 		color2 = Color.PINK;
+		color3 = Color.PINK;
 		
 		//setting animation 
 		mainMusic = new Music("res/DigitalStream.wav");
@@ -71,18 +77,24 @@ public class GameInterFace extends GamePanel{
 		g2d.fill(button1);
 		g2d.setColor(color2);
 		g2d.fill(button2);
+		g2d.setColor(color3);
+		g2d.fill(button3);
 		
 		g2d.setColor(Color.BLACK);
 		
 		g2d.setFont(new Font("italic", Font.BOLD, size1));
 		g2d.drawString("Play", 125, 130);
 		g2d.setFont(new Font("italic", Font.BOLD, size2));
-		g2d.drawString("Quit", 120, 180);
+		g2d.drawString("Quit", 125, 180);
+		g2d.setFont(new Font("italic", Font.BOLD, size3));
+		g2d.drawString("Scores", 108, 230);
+		
 		
 		g2d.setColor(Color.red.darker());
 		g2d.setStroke(new BasicStroke(5f));
 		g2d.draw(button1);
 		g2d.draw(button2);
+		g2d.draw(button3);
 		
 		
 		//Animation test TODO
@@ -106,13 +118,17 @@ public class GameInterFace extends GamePanel{
 		if(input.mouseIsClicked())
 			if(button1.contains(input.point))
 				setStage(1);
+			else if(button3.contains(input.point)){
+				setStage(2);
+			}
 			else if(button2.contains(input.point)){
 				if (JOptionPane.showConfirmDialog(
 					    null,
 					    "Are you sure you want to quit?",
 					    "Quit Game",
-					    JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION);
+					    JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
 					System.exit(0);
+					}
 			}
 		
 		if(button1.contains(input.point)){
@@ -147,6 +163,22 @@ public class GameInterFace extends GamePanel{
 		else {
 			color2 = Color.PINK;
 			size2 = 25; 
+		}
+		
+		if(button3.contains(input.point)){
+			color3 = Color.RED.brighter();
+			if(up3)
+				size3++;
+			else
+				size3--;
+			
+			if(size3==27 || size3==23)
+				up3= !up3;
+			
+		}
+		else {
+			color3 = Color.PINK;
+			size3 = 25; 
 		}
 		
 		
