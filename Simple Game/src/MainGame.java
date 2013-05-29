@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+import java.util.prefs.BackingStoreException;
 
 import javax.swing.JFrame;
 
@@ -18,11 +19,11 @@ public class MainGame extends GamePanel {
 
 	final Font font = new Font("serial", Font.BOLD + Font.ITALIC, 25);
 	
-	boolean isOn; 
+	
 	boolean isPaused; 
 	
-	int MAX_WIDTH;
-	int MAX_HEIGHT;
+	int maxWidth;
+	int maxHeight;
 	int upperBound;
 	int bottomBound; 
 	int leftBound;
@@ -34,8 +35,6 @@ public class MainGame extends GamePanel {
 	int rockWallTrachers=0;
 	
 	int waTracker =0;
-	int score;
-	int speed;
 	int time;
 	
 
@@ -58,6 +57,10 @@ public class MainGame extends GamePanel {
 	final Image rock = pure.TranseptBufferedImage("res/rock.png");
 	
 	
+	final Image treasure = pure.TranseptBufferedImage("res/background.jpg");
+	final Image layer = pure.TranseptBufferedImage("res/support.png");
+	int lol = layer.getHeight(null);
+	
 	final Image[] im = { 
 			pure.TranseptBufferedImage("res/volcano/volcano_1.png"),
 			pure.TranseptBufferedImage("res/volcano/volcano_2.png"),
@@ -79,27 +82,24 @@ public class MainGame extends GamePanel {
 	ObstacleSpawner swamper; 
 	
 	
-	Item healthPot; 
-	Item slow; 
-	
 	public MainGame(JFrame f) {
 		super(f);
-		isOn = true; 
+		
 		isPaused = false; 
 		
-		MAX_WIDTH = f.getWidth();
-		MAX_HEIGHT = f.getHeight();
-		death = new Rectangle(50, 100, 10, MAX_HEIGHT - 200);
+		maxWidth = f.getWidth();
+		maxHeight = f.getHeight();
+		death = new Rectangle(50, 100, 10, maxHeight - 200);
 		
 		upperBound = 100;
-		bottomBound = MAX_HEIGHT -100;
+		bottomBound = maxHeight -100;
 		leftBound = 50; 
-		rightBound = MAX_WIDTH -50; 
+		rightBound = maxWidth -50; 
 		
-		rightSide = new Rectangle(0, 0, MAX_WIDTH, upperBound);
-		leftSide = new Rectangle(0, bottomBound, MAX_WIDTH, upperBound );
-		topSide = new Rectangle(0, 0, leftBound, MAX_HEIGHT);
-		botSide = new Rectangle(rightBound, 0, leftBound, MAX_HEIGHT);
+		rightSide = new Rectangle(0, 0, maxWidth, upperBound);
+		leftSide = new Rectangle(0, bottomBound, maxWidth, upperBound );
+		topSide = new Rectangle(0, 0, leftBound, maxHeight);
+		botSide = new Rectangle(rightBound, 0, leftBound, maxHeight);
 		
 		PurifiedImage pure = new PurifiedImage();
 		
@@ -109,32 +109,37 @@ public class MainGame extends GamePanel {
 				};
 		
 		firewall = new Animation(im,20);
-		swamper = new ObstacleSpawner(rightBound, leftBound, upperBound, bottomBound);
 		
-		swamper.createNewWall(100, 50);
 		
 		
 		
 		
 		
 	/*
-		g.fillRect(0, 0, MAX_WIDTH, 100);// Upper Frame
-		g.fillRect(0, MAX_HEIGHT - 100, MAX_WIDTH, 100);// Bottom Frame
+		g.fillRect(0, 0, maxWidth, 100);// Upper Frame
+		g.fillRect(0, maxHeight - 100, maxWidth, 100);// Bottom Frame
 
-		g.fillRect(0, 0, 50, MAX_HEIGHT);// Left Frame
-		g.fillRect(MAX_WIDTH - 50, 0, 50, MAX_HEIGHT);// Right Frame
+		g.fillRect(0, 0, 50, maxHeight);// Left Frame
+		g.fillRect(maxWidth - 50, 0, 50, maxHeight);// Right Frame
 		*/
 	}
 
 	@Override
 	public void init() {
-		speed = 1;
-		time = 0;
-		score = 0;
-	
+		time = -250;
+		
+		
+		isPaused = false;
 		player = new BallPlayer(input, jk);
 		
+		player.animation.setStop(true);
+		player.speed = 3;
 		
+		player.y  = maxHeight - (lol + player.height);// TODO replace lol with the height of layer 
+		player.x = 0-player.width;
+		
+		swamper = new ObstacleSpawner(rightBound, leftBound, upperBound, bottomBound);
+		swamper.createNewWall(100, 50);
 	}
 
 	@Override
@@ -154,26 +159,22 @@ public class MainGame extends GamePanel {
 			
 			g.drawImage(volcano.getAnimationImage(), leftBound + volcano.getImageAt(0).getWidth(null) -2, upperBound*2-45, null);
 			
-			int rockWidth = rockwall.getWidth(null) ; 
-			//g.drawImage(rockwall, leftBound - rockWallTrachers ,  upperBound*2 , null);
-			//g.drawImage(rockwall, leftBound - rockWallTrachers + rockWidth,  upperBound*2 , null);
-			//g.drawImage(rockwall, leftBound - rockWallTrachers + rockWidth*2,  upperBound*2 , null);
-			//g.drawImage(rockwall, leftBound - rockWallTrachers + rockWidth*3,  upperBound*2 , null);
-			rockWallTrachers++;
-			
-			if(rockWallTrachers == rockWidth)
-				rockWallTrachers=0;
 			
 			int waWidth = wa.getWidth(null);
 			int waHieght = upperBound - 190;
 			g.drawImage(wa, leftBound - waTracker ,  waHieght, null);
 			g.drawImage(wa, leftBound - waTracker + waWidth ,  waHieght, null);
-			g.drawImage(wa, leftBound - waTracker + waWidth*2 ,  waHieght, null);
+			//g.drawImage(wa, leftBound - waTracker + waWidth*2 ,  waHieght, null);
 			
-			waTracker+=2;
 			
-			if(waTracker >= waWidth)
-				waTracker=0;
+			int rockWidth = rock.getWidth(null) ; 
+			int rockHieght =  maxHeight - (rock.getHeight(null)+ upperBound/2 ); 
+			
+			g.drawImage(rock, leftBound - rockWallTrachers ,  rockHieght , null);
+			g.drawImage(rock, leftBound - rockWallTrachers + rockWidth,  rockHieght , null);
+			g.drawImage(rock, leftBound - rockWallTrachers + rockWidth*2,  rockHieght , null);
+			g.drawImage(rock, leftBound - rockWallTrachers + rockWidth*3,  rockHieght , null);
+			
 			
 		// draw player 
 		//g2d.drawImage(player.getAnimationImage(),player.x,player.y, null);
@@ -197,11 +198,11 @@ public class MainGame extends GamePanel {
 		// Drawing frames
 		g.setColor(Color.BLACK);
 
-		//g.fillRect(0, 0, MAX_WIDTH, 100);// Upper Frame
-		//g.fillRect(0, MAX_HEIGHT - 100, MAX_WIDTH, 100);// Bottom Frame
+		//g.fillRect(0, 0, maxWidth, 100);// Upper Frame
+		//g.fillRect(0, maxHeight - 100, maxWidth, 100);// Bottom Frame
 
-		//g.fillRect(0, 0, 50, MAX_HEIGHT);// Left Frame
-		//g.fillRect(MAX_WIDTH - 50, 0, 50, MAX_HEIGHT);// Right Frame
+		//g.fillRect(0, 0, 50, maxHeight);// Left Frame
+		//g.fillRect(maxWidth - 50, 0, 50, maxHeight);// Right Frame
 		
 		
 		g2d.fill(rightSide);
@@ -211,10 +212,43 @@ public class MainGame extends GamePanel {
 		
 		// drawing time and score and live
 		g2d.setColor(Color.WHITE.darker());
-
-		g2d.drawString(getRealTime(time), (MAX_WIDTH / 2)
+		
+	 	if(time<-100){
+			
+			g.drawImage(treasure, 0, 0, null);
+			
+			player.drawMe(g);
+			
+			g.drawImage(layer, 0, maxHeight-layer.getHeight(null), null);
+			
+			
+		//ANIMATION HERE
+			
+		}//end time -100
+		else if (time<0){
+			g.setColor(Color.WHITE);
+			
+			if(time > -40){
+			if(time <-30)
+				g.drawString("3..", maxWidth/2, maxHeight/2);
+			else if(time <-20)
+				g.drawString("2..", maxWidth/2, maxHeight/2);
+			else if(time <-10)
+				g.drawString("1", maxWidth/2, maxHeight/2);
+			
+			}//end big if
+			
+		}
+		else if (time >= 0){
+			
+			if(time <10){
+				g.setColor(Color.RED);
+				g.drawString("GO!!", maxWidth/2, maxHeight/2);
+			}
+			
+		g2d.drawString(getRealTime(time), (maxWidth / 2)
 				- (getRealTime(time).length()*7), 20);
-		g2d.drawString(String.format("Score_:_%4d", player.score).replaceAll(" ", "0").replaceAll("_", " "),  (MAX_WIDTH / 2)
+		g2d.drawString(String.format("Score_:_%4d", player.score).replaceAll(" ", "0").replaceAll("_", " "),  (maxWidth / 2)
 				- ("Score : " .length()*10), 45) ;
 		
 		//DRAW HEALTH BAR
@@ -226,35 +260,75 @@ public class MainGame extends GamePanel {
 		g.setColor(Color.YELLOW);
 		g2d.drawString("Energy: ", 70 ,100);  
 		g.fillRect(160, 80, player.energy*5, 20);
-		
-		//Guides X & Y TODO
+		}
+		//Guides X & Y 
 		//g2d.drawString(String.format("x: %d, y: %d", input.point.x, input.point.y), 100, 100);
 		//g2d.drawString("secondJump "+player.secondJump, 100, 120);
-		g.setColor(Color.black);
-		if(!player.isAlive){
-			g.drawString("You lost", MAX_WIDTH/2 - 80, MAX_HEIGHT/2);
+		g.setColor(Color.RED.darker().darker());
+		if(isPaused){
+			//TODO
+			screenMenu(g, "GAME IS PAUSED");
 			
+		}
+		else if(!player.isAlive){
+			
+			screenMenu(g, "  YOU LOST");
+			
+		}else if(time>0){
+			waTracker+= player.speed/2;
+			if(waTracker >= waWidth)
+				waTracker=0;
+			
+			rockWallTrachers+=player.speed -1;
+			if(rockWallTrachers == rockWidth)
+				rockWallTrachers=0;
 		}
 			
 	}//end draw
 
 	@Override
 	public void action() {
-	
-	
-		
-		if (player.isAlive) {
-			player.speed = speed*3;
+		if(time <0){
+			// ANIMATION BEFORE GAME STARTS!!! 
+			
+			if(player.x < 205){
+				player.x+=2;
+				player.animation.nextFrame();
+			}
+			else if(player.x < 216){
+				player.x+=2;
+				player.animation.nextFrame();
+				player.y++;
+			}
+			else 
+				player.y+=3;
+			
+			if(player.y >= maxHeight){
+				player.y = 0; 
+			}
+			
+			if(input.anyKeyIsClicked() && time < -150)
+			{
+				player.x = 218; 
+				player.y = maxHeight-1;
+				time = -100;
+				volcano.setStop(false);
+			}
+			
+			time++;
+			if(time==0)
+				player.animation.setStop(false);
+		}
+		else
+		if (player.isAlive && !isPaused) {
+			player.speed = 2 + player.score/100;
 			
 			player.action();
-		
-			
 			swamper.lunch();
-			
+		
 			swamper.action(player, time);
 			
 			time++;
-		
 			//DEATH
 			if(player.x < 60){
 				player.x = 65;
@@ -267,8 +341,23 @@ public class MainGame extends GamePanel {
 				player.hp =0;
 				player.isAlive = false; 
 			}	
-			
+			if(input.keyIsClicked(KeyEvent.VK_P)){
+				isPaused = true;
+				volcano.setStop(true);
+				player.animation.setStop(true);
+			}
 		}// end if isAlive
+		else if(isPaused){
+			if(input.keyIsClicked(KeyEvent.VK_P)){
+				isPaused = false;
+				volcano.setStop(false);
+				player.animation.setStop(false);
+			}
+			else if (input.keyIsClicked(KeyEvent.VK_R))
+				init();
+			else if(input.keyIsClicked(KeyEvent.VK_Q))
+				setStage(0);
+		}
 		else{
 			if(input.keyIsClicked(KeyEvent.VK_R))
 				init();
@@ -288,5 +377,31 @@ g.drawImage(fireBall.getAnimationImage(), leftBound + ((i%13)*30), upperBound - 
 		}
 		
 	}
+	
+	void screenMenu(Graphics g, String s){
+		Graphics2D g2d = (Graphics2D) g; 
+		g2d.fillRect(leftBound*3, upperBound*2, 250, 100);
+		
+		for(int i=0;i <10; i++){
+			g.drawImage(FireBallObstacle.fireBallUpAnimation.getAnimationImage(), leftBound*3 + i*25  - 4, upperBound*2 - 40, null);
+			g.drawImage(FireBallObstacle.fireBallDownAnimation.getAnimationImage(), leftBound*3 + i*25   - 2, upperBound*2 + 80, null);
+			if(i%2==0){
+				g.drawImage(FireBallObstacle.fireBallLeftAnimation.getAnimationImage(), leftBound*8 - 10 , upperBound*2 + (i*10), null);
+				g.drawImage(FireBallObstacle.fireBallRightAnimation.getAnimationImage(), leftBound*2 + 5 , upperBound*2 + (i*10), null);
+			}//end if
+		}//end for
+		g.setColor(Color.BLACK);
+		g.drawString(s, maxWidth/3, maxHeight/2);
+		
+		g.setFont(new Font("something", Font.PLAIN, 10));
+		
+		
+		g.drawString("P to resume or R to restart or Q to quit", maxWidth/3 + 25 ,  maxHeight/2 + 20);
+		
+		g.setFont(font);
+		
+	}
+	
+	
 	
 }//end class

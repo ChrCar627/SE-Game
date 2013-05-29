@@ -81,7 +81,9 @@ public class BallPlayer extends Player {
 		hp = 3;
 		
 		energy = MAX_ENERGY; 
-				
+		
+		slowEffect = 0; 		
+		
 		isPushed = false;
 	}
 	
@@ -120,11 +122,11 @@ public class BallPlayer extends Player {
 				isJumping = true;
 			}
 		
-			applyJumpingAndFalling(KeyEvent.VK_SPACE, speed*2, upperBound + 150 - jumpingLimit, bottomBound - height  );
+			applyJumpingAndFalling(KeyEvent.VK_SPACE, 4-slowEffect, upperBound + 150 - jumpingLimit, bottomBound - height  );
 		}else if (energy <=0){
 			
 			isFalling = true; 
-			applyJumpingAndFalling(KeyEvent.VK_SPACE, speed*2, upperBound + 150 - jumpingLimit, bottomBound - height);
+			applyJumpingAndFalling(KeyEvent.VK_SPACE, 4-slowEffect, upperBound + 150 - jumpingLimit, bottomBound - height);
 		}else{
 			energy--; 
 		}
@@ -142,7 +144,7 @@ public class BallPlayer extends Player {
 			animation.previousFrame();
 		}
 		else {
-			applyGravityRight(speed, (MAX_WIDTH) - (2*leftBound));
+			applyGravityRight(2, (MAX_WIDTH) - (2*leftBound));
 			if(x < MAX_WIDTH/2)
 				animation.nextFrame();
 		}
