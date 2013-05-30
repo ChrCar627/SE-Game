@@ -375,10 +375,16 @@ public class MainGame extends GamePanel {
 			if(player.hp <=0){
 				player.hp =0;
 				player.isAlive = false; 
-				if(highscore.CheckScore(player.score)==true){
-					String s =  JOptionPane.showInputDialog ( "New high score! Enter your name: " );
-					highscore.AddScore(s, player.score);
-					highscore.SaveFile();
+				if(HighScores.CheckScore(player.score)==true){
+					String s;
+					do{
+					 s =  JOptionPane.showInputDialog ( "New high score! Enter your name: " );
+					if(s.isEmpty())
+						s = "Someone";
+					 
+					}while(!s.replace(" ", "").toLowerCase().matches("[a-z][a-z]*"));
+					HighScores.AddScore(s, player.score);
+					HighScores.SaveFile();
 				}
 			}	
 			if(input.keyIsClicked(KeyEvent.VK_P)){

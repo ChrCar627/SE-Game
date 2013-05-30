@@ -119,10 +119,7 @@ public class BallPlayer extends Player {
 		applyImmuneCD();
 		applyCoinCD();
 		
-		if(input.keyIsDown(KeyEvent.VK_LEFT)){
-			applyGravityLeft(speed*2, leftBound);
-			
-		}
+		
 		if( input.keyIsUp(KeyEvent.VK_SHIFT)){
 			
 			if(secondJump && input.keyIsClicked(KeyEvent.VK_SPACE)){
@@ -148,6 +145,9 @@ public class BallPlayer extends Player {
 		
 	//	applyMovingRight(KeyEvent.VK_RIGHT, speed, 50 + 200);
 	//	applyMovingLeft(KeyEvent.VK_LEFT, speed, 50 + 20); 
+		if(input.keyIsDown(KeyEvent.VK_LEFT) && x > leftBound + 10)
+				isPushed = true;
+		
 		if(isPushed){
 			applyGravityLeft(speed, 50);
 			animation.previousFrame();
