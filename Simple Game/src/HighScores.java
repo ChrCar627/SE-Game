@@ -56,7 +56,10 @@ public class HighScores extends GamePanel {
 	}
 
 	public void init() {
-		
+		// TODO NOTE!! we wanna keep the highscores even after closing the game? What we 
+		// should do here is try reading a file called "highscores.dat" (for example) and
+		// and read in the values of names, scores, and coins. If the file doesn't exist,
+		//then make a default file. 
 	}
 
 	public void draw(Graphics g) {

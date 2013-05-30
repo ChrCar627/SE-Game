@@ -19,7 +19,6 @@ public class GameInterFace extends GamePanel{
 	private static final long serialVersionUID = 1L;
 	
 	int cd =0;
-	int fly =200;
 	
 	
 	final int W = 100;
@@ -99,7 +98,6 @@ public class GameInterFace extends GamePanel{
 		
 		//Animation test TODO
 		
-		//g.drawImage(CoinObstacle.coinAnimation.getAnimationImage(), 10 ,10 ,null);
 		
 		if(input.keyIsClicked(KeyEvent.VK_SPACE)){
 			cd = 50;

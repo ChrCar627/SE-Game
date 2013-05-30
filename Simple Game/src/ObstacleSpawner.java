@@ -19,6 +19,8 @@ public class ObstacleSpawner {
 	
 	CoinObstacle[] coins; 
 	
+	BubbleObstacle bubberducky; //BABABUBBERDUCKYBUBBERDUCKYBUBBERDUCK
+	
 	Random ran = new Random(); 
 	
 	PurifiedImage pure = new PurifiedImage();
@@ -32,7 +34,7 @@ public class ObstacleSpawner {
 	int upperBound; 
 	int botBound; 
 	
-	
+	int nextBottle = 1; 
 	
 	
 	
@@ -60,6 +62,7 @@ public class ObstacleSpawner {
 			coins[i].y = 3*upperBound;
 		}
 		
+		bubberducky = new BubbleObstacle();
 		
 		
 	}
@@ -102,6 +105,9 @@ public class ObstacleSpawner {
 		// for(int i=0; i<spike.length;i++)
 		//	 spike[i].drawMe(g);
 		 
+		bubberducky.drawMe(g);
+		
+		
 	}
 
 	public void action(Player p, int time) {
@@ -174,6 +180,7 @@ public class ObstacleSpawner {
 			}
 			
 			
+			
 			//BURN IF TOUCH
 			if(!p.isImmune){
 			for(int i=0; i<fireBalls.length;i++)
@@ -181,9 +188,24 @@ public class ObstacleSpawner {
 					playerRecieveDamage(p);
 					
 				}//end if
-					
 		}//end for
 		}//end if isImmune
+		
+		//THROWING BUBBLES
+		if(time > 20 && bubberducky.y >= botBound){
+			nextBottle++; 
+			bubberducky.x = leftBound*2 + ran.nextInt(leftBound*2); 
+			bubberducky.y = 0;
+		}
+		//Falling 
+		if(bubberducky.y <= botBound)
+			bubberducky.y+=p.speed;
+		//get bubbled
+		if(p.getEllipse2DDouble().intersects(bubberducky.getShape())){
+			p.isSheilded = true; 
+			bubberducky.y = botBound;
+		}
+			
 	}
 
 	private void moveWallBack(int delta){

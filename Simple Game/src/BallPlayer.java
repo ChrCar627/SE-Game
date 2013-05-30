@@ -98,13 +98,18 @@ public class BallPlayer extends Player {
 	
 	public void drawMe(Graphics g){
 		g.drawImage(getAnimationImage(), x, y, null);
-		if(isImmune)
+		if(isImmune){
 			g.drawImage(immuneAni.getAnimationImage(), x, y, null);
+		}
+		
+		if(isSheilded)
+			g.drawImage(BubbleObstacle.bubbleAnimation.getAnimationImage(), x-2, y-1, null);
 		
 		if(coinsCD > 0){
 			//int coinYpos = (coinsCD>10)? coinsCD*2 : 10;
 			g.drawImage(CoinObstacle.coinAnimation.getAnimationImage() , x+(width/2) - 6, (y+height/2) - (70 -coinsCD*2) , null);
 		}
+		
 		
 	}
 	
@@ -122,11 +127,12 @@ public class BallPlayer extends Player {
 				isJumping = true;
 			}
 		
-			applyJumpingAndFalling(KeyEvent.VK_SPACE, 4-slowEffect, upperBound + 150 - jumpingLimit, bottomBound - height  );
+			applyJumpingAndFalling(KeyEvent.VK_SPACE, speed +2 -slowEffect, upperBound + 150 - jumpingLimit, bottomBound - height  );
 		}else if (energy <=0){
 			
 			isFalling = true; 
-			applyJumpingAndFalling(KeyEvent.VK_SPACE, 4-slowEffect, upperBound + 150 - jumpingLimit, bottomBound - height);
+			applyJumpingAndFalling(KeyEvent.VK_SPACE, speed +2 -slowEffect, upperBound + 150 - jumpingLimit, bottomBound - height);
+			
 		}else{
 			energy--; 
 		}

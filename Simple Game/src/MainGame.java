@@ -274,13 +274,13 @@ public class MainGame extends GamePanel {
 			
 			screenMenu(g, "  YOU LOST");
 			
-		}else if(time>0){
+		}else if(time>0 && !player.isPushed){ 
 			waTracker+= player.speed/2;
 			if(waTracker >= waWidth)
 				waTracker=0;
 			
 			rockWallTrachers+=player.speed -1;
-			if(rockWallTrachers == rockWidth)
+			if(rockWallTrachers >= rockWidth)
 				rockWallTrachers=0;
 		}
 			
