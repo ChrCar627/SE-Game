@@ -2,6 +2,7 @@ package fun;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
  
 
@@ -18,30 +19,34 @@ public class Music {
 		
 		 try {
 	        
-			 File soundFile = new File("src/"+fileName);
+			 File soundFile = new File(fileName);
+			 //System.out.println(soundFile.getAbsolutePath());
+			 //System.out.println(getClass().getResource("coin-04.wav"));
 			 AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
-			
 			 clip = AudioSystem.getClip();
 			 
 			 clip.open(audioIn);
 			 
+	      } catch (FileNotFoundException e){
+	    	  System.err.println(e);
+	    	  
 	      } catch (UnsupportedAudioFileException e) {
-	         e.printStackTrace();
+	         //e.printStackTrace();
 	      } catch (IOException e) {
-	         e.printStackTrace();
+	         //e.printStackTrace();
 	      } catch (LineUnavailableException e) {
-	         e.printStackTrace();
+	         //e.printStackTrace();
 	      }
 	}//end music  
 	
 	public void play(){
-		if(clip.isOpen())
-		clip.start(); 
+		if(clip!=null&&clip.isOpen())
+			clip.start(); 
 	}
 	
 	public void stop(){
-		if(clip.isOpen())
-		clip.stop();
+		if(clip!=null&&clip.isOpen())
+			clip.stop();
 	}
 	
 	public void setFramePosition(int frames){
@@ -49,8 +54,8 @@ public class Music {
 	}
 	
 	public void restart(){
-		if(clip.isOpen())
-		clip.setFramePosition(0);
+		if(clip!=null&&clip.isOpen())
+			clip.setFramePosition(0);
 	}
 	
 	public void loop(){
