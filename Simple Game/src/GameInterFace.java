@@ -138,11 +138,8 @@ public class GameInterFace extends GamePanel{
 			}
 			else if(button3.contains(input.point)){
 				music.stop();
-				if (JOptionPane.showConfirmDialog(
-					    null,
-					    "Are you sure you want to quit?",
-					    "Quit Game",
-					    JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
+				if (JOptionPane.showConfirmDialog(null,"Are you sure you want to quit?","Quit Game",
+						JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION){
 					System.exit(0);
 					}
 			}

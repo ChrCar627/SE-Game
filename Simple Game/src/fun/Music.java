@@ -35,10 +35,12 @@ public class Music {
 	}//end music  
 	
 	public void play(){
+		if(clip.isOpen())
 		clip.start(); 
 	}
 	
 	public void stop(){
+		if(clip.isOpen())
 		clip.stop();
 	}
 	
@@ -47,6 +49,7 @@ public class Music {
 	}
 	
 	public void restart(){
+		if(clip.isOpen())
 		clip.setFramePosition(0);
 	}
 	
