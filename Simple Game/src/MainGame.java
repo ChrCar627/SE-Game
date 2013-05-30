@@ -1,3 +1,4 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -10,6 +11,7 @@ import java.util.Random;
 import java.util.prefs.BackingStoreException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import fun.*;
 
@@ -29,7 +31,7 @@ public class MainGame extends GamePanel {
 	int leftBound;
 	int rightBound;
 	
-
+	HighScores highscore;
 	
 	
 	int rockWallTrachers=0;
@@ -221,6 +223,30 @@ public class MainGame extends GamePanel {
 			
 			g.drawImage(layer, 0, maxHeight-layer.getHeight(null), null);
 			
+
+			g.setColor(Color.pink);
+			g.fillRect(100, 30, 300, 200);
+			g.setColor(Color.red.darker());
+			g2d.setStroke(new BasicStroke(7f));
+			g.drawRect(100, 30, 300, 200);
+			g.setColor(Color.black);
+			g.setFont(new Font("something", Font.BOLD, 18));
+			g.drawString("Controls:", 200, 50);
+			g.setFont(new Font("something", Font.PLAIN, 14));
+			g.drawString("Spacebar - Jump", 110, 70);
+			g.drawString("Shift - Float", 110, 90);
+			g.drawString("Left - Move Left", 110, 110);
+			
+			g.setFont(new Font("something", Font.BOLD, 18));
+			g.drawString("How to Play:", 190, 140);
+			g.setFont(new Font("something", Font.PLAIN, 14));
+			g.drawString("Dodge fireballs", 110, 70+90);
+			g.drawString("Jump over obstacles", 110, 90+90);
+			g.drawString("Collect coins", 110, 110+90);
+			
+			g.setFont(new Font("something", Font.BOLD, 16));
+			g.drawString("Press Spacebar to skip", 110, 130+90);
+			
 			
 		//ANIMATION HERE
 			
@@ -340,6 +366,11 @@ public class MainGame extends GamePanel {
 			if(player.hp <=0){
 				player.hp =0;
 				player.isAlive = false; 
+				if(highscore.CheckScore(player.score)==true){
+					String s =  JOptionPane.showInputDialog ( "New high score! Enter your name: " );
+					highscore.AddScore(s, player.score);
+					highscore.SaveFile();
+				}
 			}	
 			if(input.keyIsClicked(KeyEvent.VK_P)){
 				isPaused = true;
@@ -359,6 +390,8 @@ public class MainGame extends GamePanel {
 				setStage(0);
 		}
 		else {
+			
+			
 			if(input.keyIsClicked(KeyEvent.VK_R))
 				init();
 			else if(input.keyIsClicked(KeyEvent.VK_Q))

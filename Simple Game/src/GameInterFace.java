@@ -58,7 +58,7 @@ public class GameInterFace extends GamePanel{
 		color3 = Color.PINK;
 		
 		//setting animation 
-		mainMusic = new Music("res/DigitalStream.wav");
+		mainMusic = new Music("res/fireBalls/DigitalStream.wav");
 		
 		//mainMusic.loop();
 	}
@@ -86,9 +86,9 @@ public class GameInterFace extends GamePanel{
 		g2d.setFont(new Font("italic", Font.BOLD, size1));
 		g2d.drawString("Play", 125, 130);
 		g2d.setFont(new Font("italic", Font.BOLD, size2));
-		g2d.drawString("Quit", 125, 180);
+		g2d.drawString("Scores", 106, 180);
 		g2d.setFont(new Font("italic", Font.BOLD, size3));
-		g2d.drawString("Scores", 108, 230);
+		g2d.drawString("Quit", 125, 230);
 		
 		
 		g2d.setColor(Color.red.darker());
@@ -118,10 +118,10 @@ public class GameInterFace extends GamePanel{
 		if(input.mouseIsClicked())
 			if(button1.contains(input.point))
 				setStage(1);
-			else if(button3.contains(input.point)){
+			else if(button2.contains(input.point)){
 				setStage(2);
 			}
-			else if(button2.contains(input.point)){
+			else if(button3.contains(input.point)){
 				if (JOptionPane.showConfirmDialog(
 					    null,
 					    "Are you sure you want to quit?",
