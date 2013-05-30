@@ -267,12 +267,12 @@ public class MainGame extends GamePanel {
 		g.setColor(Color.RED.darker().darker());
 		if(isPaused){
 			//TODO
-			screenMenu(g, "GAME IS PAUSED");
+			screenMenu(g, "GAME IS PAUSED", "P - resume    R to restart    Q - quit");
 			
 		}
 		else if(!player.isAlive){
 			
-			screenMenu(g, "  YOU LOST");
+			screenMenu(g, "     YOU LOST", "R - restart    Q - quit    S - show high scores");
 			
 		}else if(time>0 && !player.isPushed){ 
 			waTracker+= player.speed/2;
@@ -334,7 +334,7 @@ public class MainGame extends GamePanel {
 				player.x = 65;
 				player.hp--;
 				player.setImmune(50);
-				
+				player.isSheilded = false;
 			}
 			
 			if(player.hp <=0){
@@ -358,10 +358,13 @@ public class MainGame extends GamePanel {
 			else if(input.keyIsClicked(KeyEvent.VK_Q))
 				setStage(0);
 		}
-		else{
+		else {
 			if(input.keyIsClicked(KeyEvent.VK_R))
 				init();
-			
+			else if(input.keyIsClicked(KeyEvent.VK_Q))
+				setStage(0);
+			else if(input.keyIsClicked(KeyEvent.VK_S))
+				setStage(2);
 		}//player is dead
 
 	}//end action
@@ -378,7 +381,7 @@ g.drawImage(fireBall.getAnimationImage(), leftBound + ((i%13)*30), upperBound - 
 		
 	}
 	
-	void screenMenu(Graphics g, String s){
+	void screenMenu(Graphics g, String title, String text){
 		Graphics2D g2d = (Graphics2D) g; 
 		g2d.fillRect(leftBound*3, upperBound*2, 250, 100);
 		
@@ -391,12 +394,12 @@ g.drawImage(fireBall.getAnimationImage(), leftBound + ((i%13)*30), upperBound - 
 			}//end if
 		}//end for
 		g.setColor(Color.BLACK);
-		g.drawString(s, maxWidth/3, maxHeight/2);
+		g.drawString(title, maxWidth/3, maxHeight/2);
 		
 		g.setFont(new Font("something", Font.PLAIN, 10));
 		
 		
-		g.drawString("P to resume or R to restart or Q to quit", maxWidth/3 + 25 ,  maxHeight/2 + 20);
+		g.drawString(text, maxWidth/3 + 2 ,  maxHeight/2 + 20);
 		
 		g.setFont(font);
 		

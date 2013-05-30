@@ -12,7 +12,7 @@ public class test extends JFrame{
 	private static final long serialVersionUID = 1L;
  
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Test"); 
+		JFrame frame = new JFrame("Hell Blazer"); 
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(500, 500);

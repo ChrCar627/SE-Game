@@ -67,6 +67,8 @@ public class GameInterFace extends GamePanel{
 	public void draw(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g; 
 		
+		g.drawImage(new PurifiedImage().TranseptBufferedImage("res/background.jpg"), 0, 0, null);
+		
 		RenderingHints rh = new RenderingHints(
 	             RenderingHints.KEY_TEXT_ANTIALIASING,
 	             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
