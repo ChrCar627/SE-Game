@@ -119,7 +119,10 @@ public class BallPlayer extends Player {
 		applyImmuneCD();
 		applyCoinCD();
 		
-		
+		if(input.keyIsDown(KeyEvent.VK_LEFT)){
+			applyGravityLeft(speed*2, leftBound);
+			
+		}
 		if( input.keyIsUp(KeyEvent.VK_SHIFT)){
 			
 			if(secondJump && input.keyIsClicked(KeyEvent.VK_SPACE)){

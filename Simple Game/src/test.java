@@ -23,6 +23,7 @@ public class test extends JFrame{
 		MainGame mg = new MainGame(frame);
 		GameInterFace gif = new GameInterFace(frame);
 		HighScores hs = new HighScores(frame);
+		mg.highscore = hs;
 		
 		GameMenuPanel gmp = new GameMenuPanel(frame, gif,mg,hs);
 		
