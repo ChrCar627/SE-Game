@@ -172,6 +172,8 @@ public class ObstacleSpawner {
 			//GET COIN WHEN TOUCH
 			for(int i=0; i<coins.length;i++){
 			  if(p.getEllipse2DDouble().intersects(coins[i].getShape())){
+				  coins[i].coinSound.restart();
+				  coins[i].coinSound.play();
 				  p.addCoins(1);
 				  p.score+= p.speed*level; 
 				  coins[i].x=0;
@@ -185,6 +187,8 @@ public class ObstacleSpawner {
 			if(!p.isImmune){
 			for(int i=0; i<fireBalls.length;i++)
 				if(p.getEllipse2DDouble().intersects(fireBalls[i].getShape())){
+					fireBalls[i].fireSound.restart();
+					fireBalls[i].fireSound.play();
 					playerRecieveDamage(p);
 					
 				}//end if

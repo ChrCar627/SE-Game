@@ -82,6 +82,7 @@ public class MainGame extends GamePanel {
 	ObstacleSpawner swamper; 
 	
 	
+	
 	public MainGame(JFrame f) {
 		super(f);
 		
@@ -140,6 +141,13 @@ public class MainGame extends GamePanel {
 		
 		swamper = new ObstacleSpawner(rightBound, leftBound, upperBound, bottomBound);
 		swamper.createNewWall(100, 50);
+	
+	
+	
+		 music = new fun.Music("res/472857_Hells-Inferno.wav");
+		
+		
+	
 	}
 
 	@Override
@@ -288,6 +296,7 @@ public class MainGame extends GamePanel {
 
 	@Override
 	public void action() {
+		 music.play();
 		if(time <0){
 			// ANIMATION BEFORE GAME STARTS!!! 
 			
@@ -353,16 +362,26 @@ public class MainGame extends GamePanel {
 				volcano.setStop(false);
 				player.animation.setStop(false);
 			}
-			else if (input.keyIsClicked(KeyEvent.VK_R))
+			else if (input.keyIsClicked(KeyEvent.VK_R)){
+				music.stop();
 				init();
+			}
 			else if(input.keyIsClicked(KeyEvent.VK_Q))
+			{
 				setStage(0);
+				music.stop();
+			}
 		}
 		else {
-			if(input.keyIsClicked(KeyEvent.VK_R))
+			music.stop();
+			if(input.keyIsClicked(KeyEvent.VK_R)){
+				music.stop();
 				init();
-			else if(input.keyIsClicked(KeyEvent.VK_Q))
+			}
+			else if(input.keyIsClicked(KeyEvent.VK_Q)){
 				setStage(0);
+				music.stop();
+			}
 			else if(input.keyIsClicked(KeyEvent.VK_S))
 				setStage(2);
 		}//player is dead

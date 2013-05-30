@@ -9,8 +9,15 @@ import javax.swing.Timer;
 
 public abstract class GamePanel extends JPanel {
 	//ignore this
+	
 	private static final long serialVersionUID = 1L;
 
+	public final int MAIN_MENU = 0; 
+	public final int HIGHSCORE = 1; 
+	public final int QUIT = 2; 
+	//public final int TOTUTIAL = 0; 
+	
+	
 	public static int SECOND = 1000; 
 	private static Timer timer; 
 	private boolean showFPS; 
@@ -21,6 +28,8 @@ public abstract class GamePanel extends JPanel {
 	protected static int MAX_HEIGHT; 
 	protected static JFrame jk; 
 	protected static Input input; 
+	public Music music; 
+	
 	
 	public GamePanel(JFrame f){
 		jk = f; 

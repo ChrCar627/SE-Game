@@ -56,10 +56,8 @@ public class HighScores extends GamePanel {
 	}
 
 	public void init() {
-		// TODO NOTE!! we wanna keep the highscores even after closing the game? What we 
-		// should do here is try reading a file called "highscores.dat" (for example) and
-		// and read in the values of names, scores, and coins. If the file doesn't exist,
-		//then make a default file. 
+		music = new fun.Music("res/325810_ZeldaOoTShopTheme.wav");
+		
 	}
 
 	public void draw(Graphics g) {
@@ -107,9 +105,14 @@ public class HighScores extends GamePanel {
 
 
 	public void action() {
+		music.play();
+		
 		if(input.mouseIsClicked())
 			if(button1.contains(input.point))
+			{
 				setStage(0);
+				music.stop();
+			}
 		
 		if(button1.contains(input.point)){
 			color1 = Color.RED.brighter();

@@ -45,10 +45,12 @@ public class GameMenuPanel extends GamePanel {
 
 	@Override
 	public void action() {
-		gp[currentStage].action();
-		
 		if(isStageChanged())
 			switchTo(getStage());
+		
+		gp[currentStage].action();
+		
+		
 		time++; 
 		
 	}

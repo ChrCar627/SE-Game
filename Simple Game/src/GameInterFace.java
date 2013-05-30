@@ -29,6 +29,8 @@ public class GameInterFace extends GamePanel{
 	final Rectangle button2 = new Rectangle(100, 150, W, H) ;
 	final Rectangle button3 = new Rectangle(100, 200, W, H) ;
 	
+	
+	
 	int fw;//frame width
 	int fh;//frame height
 	
@@ -46,7 +48,10 @@ public class GameInterFace extends GamePanel{
 	boolean up3 = false; 
 	
 	
-	Music mainMusic; 
+	
+	
+	
+	
 	
 	public GameInterFace(JFrame f) {
 		super(f);
@@ -58,7 +63,7 @@ public class GameInterFace extends GamePanel{
 		color3 = Color.PINK;
 		
 		//setting animation 
-		mainMusic = new Music("res/DigitalStream.wav");
+		
 		
 		//mainMusic.loop();
 	}
@@ -115,10 +120,16 @@ public class GameInterFace extends GamePanel{
 	}
 	@Override
 	public void action() {
+		
+		music.play();
+		
 		if(input.mouseIsClicked())
-			if(button1.contains(input.point))
+			if(button1.contains(input.point)){
 				setStage(1);
+				music.stop();
+			}
 			else if(button3.contains(input.point)){
+				music.stop();
 				setStage(2);
 			}
 			else if(button2.contains(input.point)){
@@ -187,6 +198,8 @@ public class GameInterFace extends GamePanel{
 
 	@Override
 	public void init() {
+		
+		music = new fun.Music("res/529283_Fire-and-Brimstone.wav");
 		
 	}
 

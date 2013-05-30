@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
  
 import fun.Animation;
+import fun.Music;
 import fun.Obstacle;
 
 
@@ -31,6 +32,7 @@ public class FireBallObstacle extends Obstacle {
 	public static Animation fireBallUpAnimation  = new Animation(im2); 
 	public static Animation fireBallLeftAnimation = new Animation(im3);
 	public static Animation fireBallDownAnimation = new Animation(im4);
+	public Music fireSound = new Music("res/fireBalls/Large Fireball-SoundBible.com-301502490.wav");
 
 	public int speed = 0; 
 	
