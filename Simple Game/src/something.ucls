@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+<class-diagram version="1.1.2" icons="false" always-add-relationships="false" generalizations="true" 
+  realizations="false" associations="true" dependencies="false" nesting-relationships="false">  
   <class id="1" language="java" name="fun.Player" project="Simple Game" file="/Simple Game/src/fun/Player.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="113" y="726"/>    
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="BallPlayer" project="Simple Game" file="/Simple Game/src/BallPlayer.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="355" y="1361"/>    
+    <position height="-1" width="-1" x="370" y="1096"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="GameInterFace" project="Simple Game" file="/Simple Game/src/GameInterFace.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="349" y="16"/>    
+    <position height="-1" width="-1" x="325" y="67"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="MainGame" project="Simple Game" file="/Simple Game/src/MainGame.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="574" y="111"/>    
+    <position height="-1" width="-1" x="534" y="144"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="fun.Obstacle" project="Simple Game" file="/Simple Game/src/fun/Obstacle.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="830" y="-116"/>    
+    <position height="-1" width="-1" x="822" y="-151"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="BubbleObstacle" project="Simple Game" file="/Simple Game/src/BubbleObstacle.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="928" y="109"/>    
+    <position height="-1" width="-1" x="925" y="61"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="FireBallObstacle" project="Simple Game" 
     file="/Simple Game/src/FireBallObstacle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="768" y="137"/>    
+    <position height="-1" width="-1" x="770" y="279"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="PurifiedImage" project="Simple Game" file="/Simple Game/src/PurifiedImage.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="854" y="560"/>    
+    <position height="-1" width="-1" x="719" y="532"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="test" project="Simple Game" file="/Simple Game/src/test.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="899" y="1403"/>    
+    <position height="-1" width="-1" x="818" y="1048"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="ObstacleSpawner" project="Simple Game" 
     file="/Simple Game/src/ObstacleSpawner.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="795" y="862"/>    
+    <position height="-1" width="-1" x="399" y="710"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="CoinObstacle" project="Simple Game" file="/Simple Game/src/CoinObstacle.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="918" y="309"/>    
+    <position height="-1" width="-1" x="927" y="404"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -147,279 +147,45 @@
   </class>  
   <class id="17" language="java" name="fun.Item" project="Simple Game" file="/Simple Game/src/fun/Item.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="605" y="1196"/>    
+    <position height="-1" width="-1" x="610" y="1043"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <association id="18">    
-    <bendpoint x="678" y="-202"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="19" name="fireBallRightAnimation"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="22" name="gp"/>      
-      <multiplicity id="23" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="25" name="mainMusic"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="27">    
-    <bendpoint x="624" y="546"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="28" name="swamper"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="31" name="empty"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="34" name="firewall"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="36">    
-    <bendpoint x="847" y="168"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="37" name="coinAnimation"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="39">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="40" name="healthPot"/>      
-      <multiplicity id="41" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="42">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="43" name="player"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="45">    
-    <bendpoint x="432" y="-173"/>    
-    <bendpoint x="321" y="-201"/>    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="46">    
-    <bendpoint x="668" y="497"/>    
-    <bendpoint x="683" y="285"/>    
-    <bendpoint x="686" y="59"/>    
-    <bendpoint x="700" y="-215"/>    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="47" name="immuneAni">        
-        <position height="18" width="73" x="669" y="-321"/>      
-      </attribute>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
-    <bendpoint x="668" y="-204"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="50" name="fireBallLeftAnimation"/>      
-      <multiplicity id="51" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="53" name="input"/>      
-      <multiplicity id="54" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="55">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="56">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="57" name="item"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <bendpoint x="683" y="565"/>    
-    <bendpoint x="854" y="199"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="60" name="fireBalls"/>      
-      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="62">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="63" name="animation"/>      
-      <multiplicity id="64" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="65">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <association id="66">    
-    <bendpoint x="452" y="183"/>    
-    <bendpoint x="460" y="-171"/>    
-    <bendpoint x="604" y="-210"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="67" name="animation"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="69">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="70">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="71" name="pure"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="73">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="74" name="pure"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="76">    
-    <bendpoint x="671" y="503"/>    
-    <bendpoint x="678" y="50"/>    
-    <bendpoint x="673" y="-235"/>    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="77" name="bubbleAni">        
-        <position height="18" width="67" x="695" y="-371"/>      
-      </attribute>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="79">    
-    <bendpoint x="678" y="329"/>    
-    <bendpoint x="688" y="-139"/>    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="80" name="animation"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="82">    
-    <bendpoint x="694" y="-184"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="83" name="fireBallUpAnimation"/>      
-      <multiplicity id="84" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="85">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <association id="86">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="87" name="pure"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="89">    
+  <generalization id="18">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <generalization id="90">    
+  <generalization id="19">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="20">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="21">    
     <bendpoint x="848" y="158"/>    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="91">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="92" name="slow"/>      
-      <multiplicity id="93" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="94">    
-    <bendpoint x="700" y="568"/>    
-    <bendpoint x="847" y="197"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="95" name="wall"/>      
-      <multiplicity id="96" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="97">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="98" name="empty"/>      
-      <multiplicity id="99" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="100">    
-    <bendpoint x="439" y="180"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="101" name="input"/>      
-      <multiplicity id="102" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+  <generalization id="22">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="23">    
+    <bendpoint x="407" y="-196"/>    
+    <bendpoint x="321" y="-201"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="24">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
     <operations public="true" package="true" protected="true" private="true"/>  
