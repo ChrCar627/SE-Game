@@ -146,7 +146,7 @@ public class MainGame extends GamePanel {
 	
 	
 	
-		 music = new fun.Music("res/472857_Hells-Inferno.wav");
+		 load("res/472857_Hells-Inferno.wav");
 		
 		
 	
@@ -301,7 +301,7 @@ public class MainGame extends GamePanel {
 		g.setColor(Color.RED.darker().darker());
 		if(isPaused){
 			//TODO
-			screenMenu(g, "GAME IS PAUSED", "P - resume    R to restart    Q - quit");
+			screenMenu(g, "GAME IS PAUSED", "P - resume    R - restart    Q - quit");
 			
 		}
 		else if(!player.isAlive){
@@ -322,7 +322,7 @@ public class MainGame extends GamePanel {
 
 	@Override
 	public void action() {
-		 music.play();
+		 music.start();
 		if(time <0){
 			// ANIMATION BEFORE GAME STARTS!!! 
 			
@@ -379,6 +379,8 @@ public class MainGame extends GamePanel {
 					String s;
 					do{
 					 s =  JOptionPane.showInputDialog ( "New high score! Enter your name: " );
+					if(s==null)
+						s = "Someone";
 					if(s.isEmpty())
 						s = "Someone";
 					 

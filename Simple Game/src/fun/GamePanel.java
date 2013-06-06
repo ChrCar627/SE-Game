@@ -3,6 +3,16 @@ package fun;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Formatter;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -28,7 +38,7 @@ public abstract class GamePanel extends JPanel {
 	protected static int MAX_HEIGHT; 
 	protected static JFrame jk; 
 	protected static Input input; 
-	public Music music; 
+	public Clip music;  
 	
 	
 	public GamePanel(JFrame f){
@@ -119,5 +129,33 @@ public abstract class GamePanel extends JPanel {
 		return stageChanged;
 	}
 	
+	public void load(String path){
+		 try {
+				 File soundFile = new File(path);
+				 AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+				 this.music = AudioSystem.getClip();
+				 
+				 this.music.open(audioIn);
+				 
+		      } catch (FileNotFoundException e){
+		    	 e.printStackTrace();
+		    	  Formatter output;
+				try {
+					output = new Formatter("errorLog.txt");
+					 output.format("Error!! %s", e.toString());
+					 output.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}  
+		      } catch (UnsupportedAudioFileException e) {
+		         //e.printStackTrace();
+		      } catch (IOException e) {
+		         //e.printStackTrace();
+		      } catch (LineUnavailableException e) {
+		         //e.printStackTrace();
+		      }
+	}
+
 	
 }//end class

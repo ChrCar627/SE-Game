@@ -125,7 +125,7 @@ public class GameInterFace extends GamePanel{
 	@Override
 	public void action() {
 		
-		music.play();
+		music.start();
 		
 		if(input.mouseIsClicked())
 			if(button1.contains(input.point)){
@@ -203,7 +203,7 @@ public class GameInterFace extends GamePanel{
 	@Override
 	public void init() {
 		
-		music = new fun.Music("res/529283_Fire-and-Brimstone.wav");
+		load("res/529283_Fire-and-Brimstone.wav");
 		
 	}
 

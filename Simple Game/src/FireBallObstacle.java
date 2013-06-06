@@ -2,8 +2,19 @@
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Formatter;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
  
 import fun.Animation;
+import fun.GamePanel;
 import fun.Music;
 import fun.Obstacle;
 
@@ -32,13 +43,39 @@ public class FireBallObstacle extends Obstacle {
 	public static Animation fireBallUpAnimation  = new Animation(im2); 
 	public static Animation fireBallLeftAnimation = new Animation(im3);
 	public static Animation fireBallDownAnimation = new Animation(im4);
-	public Music fireSound = new Music("res/fireBalls/Large Fireball-SoundBible.com-301502490.wav");
-
+	public Clip fireSound ;
 	public int speed = 0; 
 	
 	public FireBallObstacle(int s) {
 		super( 14, 18); //set width and height
-
+		
+		
+		 try {
+			 File soundFile = new File("res/fireBalls/Large Fireball-SoundBible.com-301502490.wav");
+			 AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+			 fireSound = AudioSystem.getClip();
+			 
+			 fireSound.open(audioIn);
+			 
+	      } catch (FileNotFoundException e){
+	    	 // System.err.println(e);
+	    	  Formatter output;
+			try {
+				output = new Formatter("errorLog.txt");
+				 output.format("Error!! %s", e.toString());
+				 output.close();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}  
+	      } catch (UnsupportedAudioFileException e) {
+	         //e.printStackTrace();
+	      } catch (IOException e) {
+	         //e.printStackTrace();
+	      } catch (LineUnavailableException e) {
+	         //e.printStackTrace();
+	      }
+		
 		speed = s; 
 		
 		animation = new Animation(im);

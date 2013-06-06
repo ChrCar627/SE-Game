@@ -23,6 +23,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import fun.GamePanel;
+import fun.Music;
 import fun.User;
 
 
@@ -73,7 +74,7 @@ public class HighScores extends GamePanel {
 
 	public void init() {
 
-		music = new fun.Music("res/325810_ZeldaOoTShopTheme.wav");
+		load("res/325810_ZeldaOoTShopTheme.wav");
 
 	}
 
@@ -131,7 +132,7 @@ public class HighScores extends GamePanel {
 
 
 	public void action() {
-		music.play();
+		music.start();
 		
 		if(input.mouseIsClicked())
 			if(button1.contains(input.point))

@@ -1,7 +1,6 @@
 package fun;
 
 import java.awt.Image;
-import java.awt.Shape;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Ellipse2D;
 

@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="fun.Music" project="Simple Game" file="/Simple Game/src/fun/Music.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="Music" project="Simple Game" file="/Simple Game/src/Music.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="868" y="-134"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
